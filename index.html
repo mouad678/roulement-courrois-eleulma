@@ -2,47 +2,233 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Roulement Courrois El Eulma</title>
+
 <style>
-body{margin:0;font-family:Arial;background:#111;color:white}
-header{background:#c00;padding:35px 20px;text-align:center}
-h1{margin:0;font-size:32px} header p{font-size:18px}
-section{padding:25px 15px;max-width:1000px;margin:auto}
-h2{color:#f22}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
-.card{background:#222;padding:20px;border-radius:12px;text-align:center}
-.card img{max-width:100%;height:180px;object-fit:contain}
-.btn{display:inline-block;background:#c00;color:white;padding:12px 20px;border-radius:8px;text-decoration:none}
-footer{text-align:center;background:#222;padding:25px}
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f3f3f3;
+    color:#222;
+}
+
+header{
+    background:linear-gradient(135deg,#111,#2b2b2b);
+    color:white;
+    text-align:center;
+    padding:45px 20px;
+    border-bottom:5px solid #d71920;
+}
+
+header h1{
+    margin:0;
+    font-size:32px;
+    font-weight:800;
+}
+
+header p{
+    margin:10px 0;
+    font-size:18px;
+    color:#ddd;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:30px 15px;
+}
+
+.intro{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.intro h2{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.intro p{
+    color:#666;
+    font-size:16px;
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:15px;
+    text-align:center;
+    box-shadow:0 4px 15px rgba(0,0,0,.12);
+}
+
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:10px;
+    background:#eee;
+}
+
+.card h3{
+    font-size:21px;
+    margin:15px 0 8px;
+}
+
+.card p{
+    color:#666;
+    line-height:1.5;
+}
+
+.contact{
+    margin-top:35px;
+    background:#111;
+    color:white;
+    padding:30px 20px;
+    border-radius:15px;
+    text-align:center;
+}
+
+.contact h2{
+    margin-top:0;
+    font-size:26px;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    color:white;
+    padding:14px 22px;
+    margin:7px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.phone{
+    background:#d71920;
+}
+
+.whatsapp{
+    background:#25D366;
+}
+
+.location{
+    margin-top:15px;
+    color:#ccc;
+}
+
+footer{
+    margin-top:35px;
+    background:#222;
+    color:#aaa;
+    text-align:center;
+    padding:20px;
+}
+
+@media(max-width:600px){
+    header h1{
+        font-size:25px;
+    }
+
+    header p{
+        font-size:16px;
+    }
+
+    .intro h2{
+        font-size:24px;
+    }
+}
 </style>
 </head>
+
 <body>
 
 <header>
-<h1>ROULEMENT COURROIS ELEULMA</h1>
-<p>Roulements • Courroies • Joints SPI</p>
-<p>El Eulma, Algérie</p>
+    <h1>ROULEMENT COURROIS ELEULMA</h1>
+    <p>Roulements • Courroies • Joints SPI</p>
+    <p>El Eulma, Sétif — Algérie</p>
 </header>
 
-<section>
-<h2>Nos produits</h2>
-<div class="cards">
-<div class="card"><h3>Roulements</h3><p>Roulements automobiles et industriels</p></div>
-<div class="card"><h3>Courroies</h3><p>Courroies de différentes références</p></div>
-<div class="card"><h3>Joints SPI</h3><p>Joints et pièces disponibles</p></div>
-</div>
-</section>
+<div class="container">
 
-<section>
-<h2>Contact</h2>
-<p>📞 0540 72 55 25</p>
-<p>📱 WhatsApp : 0659 73 40 31</p>
-<a class="btn" href="https://wa.me/213659734031">Contacter sur WhatsApp</a>
-</section>
+    <div class="intro">
+        <h2>Nos produits</h2>
+        <p>Roulements, courroies et joints SPI disponibles à El Eulma.</p>
+    </div>
+
+    <div class="products">
+
+        <div class="card">
+            <img src="IMG_0383.jpeg" alt="Roulements">
+            <h3>Roulements</h3>
+            <p>Roulements pour différentes applications automobiles et industrielles.</p>
+        </div>
+
+        <div class="card">
+            <img src="IMG_0384.jpeg" alt="Courroies">
+            <h3>Courroies</h3>
+            <p>Courroies et produits de transmission.</p>
+        </div>
+
+        <div class="card">
+            <img src="IMG_0385.jpeg" alt="Joints SPI">
+            <h3>Joints SPI</h3>
+            <p>Joints SPI pour différentes applications.</p>
+        </div>
+
+        <div class="card">
+            <img src="IMG_0386.jpeg" alt="Pièces automobiles">
+            <h3>Pièces automobiles</h3>
+            <p>Différentes références disponibles selon vos besoins.</p>
+        </div>
+
+        <div class="card">
+            <img src="IMG_0541.jpeg" alt="Produits">
+            <h3>Produits disponibles</h3>
+            <p>Contactez-nous pour connaître la disponibilité et la référence.</p>
+        </div>
+
+        <div class="card">
+            <img src="IMG_0542.jpeg" alt="Roulements et courroies">
+            <h3>Roulements & Courroies</h3>
+            <p>Demandez votre référence directement.</p>
+        </div>
+
+    </div>
+
+    <div class="contact">
+
+        <h2>Contactez-nous</h2>
+
+        <a class="btn phone" href="tel:0540725525">
+            📞 0540 72 55 25
+        </a>
+
+        <a class="btn whatsapp" href="https://wa.me/213659734031">
+            💬 WhatsApp
+        </a>
+
+        <div class="location">
+            📍 El Eulma, Sétif, Algérie
+        </div>
+
+    </div>
+
+</div>
 
 <footer>
-© 2026 Roulement Courrois El Eulma
+    © 2026 Roulement Courrois El Eulma
 </footer>
 
 </body>
