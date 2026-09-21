@@ -30,6 +30,10 @@
     header h1 {
       margin: 0;
       font-size: 28px;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      cursor: default;
+      outline: none;
     }
 
     header p {
@@ -262,6 +266,18 @@
       color: #b00000;
     }
 
+    .secret-admin-name {
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      cursor: default;
+      outline: none;
+    }
+
+    .secret-admin-name:focus,
+    .secret-admin-name:active {
+      outline: none;
+    }
+
     .bon-info {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -354,15 +370,6 @@
       text-align: center;
     }
 
-    /* =========================
-       MOUAD & NEDJMO SECRET
-    ========================= */
-
-    .secret-admin-name {
-      cursor: pointer;
-      user-select: none;
-    }
-
     @media (max-width: 700px) {
       header h1 {
         font-size: 22px;
@@ -416,7 +423,11 @@
 
 <header>
 
-  <h1>ROULEMENT COURROIS ELEULMA</h1>
+  <h1
+    class="secret-admin-name"
+    onclick="secretBonAccess()">
+    ROULEMENT COURROIS ELEULMA
+  </h1>
 
   <p>
     Site officiel — Roulements, Courroies & Joint SPI — El Eulma
@@ -432,24 +443,19 @@
       class="whatsapp"
       href="https://wa.me/213659734031"
       target="_blank">
-
       WhatsApp
-
     </a>
 
     <a
       class="facebook"
       href="https://www.facebook.com/share/1EpWv87NoV/?mibextid=wwXIfr"
       target="_blank">
-
       Facebook
-
     </a>
 
   </div>
 
 </header>
-
 
 <div class="container">
 
@@ -471,7 +477,7 @@
           type="text"
           id="searchInput"
           placeholder="Référence, désignation, marque, véhicule, dimensions..."
-          oninput="renderProducts">
+          oninput="renderProducts()">
 
       </div>
 
@@ -511,7 +517,6 @@
 
   </div>
 
-
   <!-- =========================
        PRODUITS
   ========================= -->
@@ -548,7 +553,6 @@
 
   </div>
 
-
   <!-- =========================
        GALERIE
   ========================= -->
@@ -570,7 +574,6 @@
 
   </div>
 
-
   <!-- =========================
        LOCALISATION
   ========================= -->
@@ -589,13 +592,10 @@
       target="_blank"
       class="request-btn"
       style="display:inline-block;text-decoration:none;">
-
       Ouvrir Google Maps
-
     </a>
 
   </div>
-
 
   <!-- =========================
        ESPACE BON PRIVÉ
@@ -610,7 +610,6 @@
       Cette partie est réservée à l'administrateur.
       La création d'un BON ne diminue pas le stock.
     </p>
-
 
     <!-- INFORMATIONS BON -->
 
@@ -701,7 +700,6 @@
 
     </div>
 
-
     <!-- =========================
          RECHERCHE PRODUIT BON
     ========================= -->
@@ -732,7 +730,6 @@
 
     </div>
 
-
     <!-- =========================
          PRODUITS DU BON
     ========================= -->
@@ -762,7 +759,6 @@
 
     </div>
 
-
     <!-- ACTIONS -->
 
     <div class="bon-actions">
@@ -770,29 +766,22 @@
       <button
         class="btn-red"
         onclick="generateBon()">
-
         Générer / Actualiser BON
-
       </button>
 
       <button
         class="btn-black"
         onclick="printBon()">
-
         🖨 Imprimer
-
       </button>
 
       <button
         class="btn-gray"
         onclick="closeAdmin()">
-
         Fermer
-
       </button>
 
     </div>
-
 
     <!-- REMISE -->
 
@@ -809,7 +798,6 @@
 
     </div>
 
-
     <!-- NOTE -->
 
     <div>
@@ -823,7 +811,6 @@
 
     </div>
 
-
     <!-- =========================
          APERÇU BON
     ========================= -->
@@ -836,12 +823,8 @@
           ROULEMENT COURROIS ELEULMA
         </h2>
 
-        <strong
-          class="secret-admin-name"
-          onclick="secretBonAccess()">
-
+        <strong>
           MOUAD & NEDJMO
-
         </strong>
 
         <p>
@@ -852,7 +835,6 @@
         </p>
 
       </div>
-
 
       <div class="bon-info">
 
@@ -888,7 +870,6 @@
 
       </div>
 
-
       <table class="bon-preview-table">
 
         <thead>
@@ -906,7 +887,6 @@
         <tbody id="previewBonProducts"></tbody>
 
       </table>
-
 
       <div class="totals">
 
@@ -948,7 +928,6 @@
 
       </div>
 
-
       <div style="margin-top:20px;">
 
         <strong>
@@ -958,7 +937,6 @@
         <span id="previewNote"></span>
 
       </div>
-
 
       <div class="bon-footer">
 
@@ -975,7 +953,6 @@
   </div>
 
 </div>
-
 
 <!-- =========================
      FOOTER
@@ -997,7 +974,6 @@
 
 </footer>
 
-
 <script>
 
   let products = [];
@@ -1009,7 +985,6 @@
 
   const ADMIN_CODE = "MOUAD26";
 
-
   /* =========================
      ACCÈS BON SECRET
      5 PRESSIONS
@@ -1018,17 +993,11 @@
   let adminTapCount = 0;
   let adminTapTimer = null;
 
-
   function secretBonAccess() {
 
     adminTapCount++;
 
     clearTimeout(adminTapTimer);
-
-
-    /*
-      5 pressions successives
-    */
 
     if (adminTapCount >= 5) {
 
@@ -1037,15 +1006,7 @@
       openAdmin();
 
       return;
-
     }
-
-
-    /*
-      Si l'utilisateur attend plus
-      de 2,5 secondes, on remet
-      le compteur à zéro.
-    */
 
     adminTapTimer = setTimeout(() => {
 
@@ -1054,7 +1015,6 @@
     }, 2500);
 
   }
-
 
   /* =========================
      OUTILS
@@ -1070,7 +1030,6 @@
 
   }
 
-
   function getReference(p) {
 
     return p.reference ??
@@ -1080,7 +1039,6 @@
            "";
 
   }
-
 
   function getDesignation(p) {
 
@@ -1092,7 +1050,6 @@
 
   }
 
-
   function getBrand(p) {
 
     return p.brand ??
@@ -1102,7 +1059,6 @@
            "";
 
   }
-
 
   function getVehicle(p) {
 
@@ -1114,7 +1070,6 @@
 
   }
 
-
   function getDimensions(p) {
 
     return p.dimensions ??
@@ -1125,7 +1080,6 @@
 
   }
 
-
   function getStock(p) {
 
     const value =
@@ -1135,16 +1089,13 @@
       p.Quantity ??
       0;
 
-
     const number = Number(value);
-
 
     return Number.isFinite(number)
       ? number
       : 0;
 
   }
-
 
   function displayStock(stock) {
 
@@ -1158,7 +1109,6 @@
 
     }
 
-
     return `
       <span class="stock-zero">
         Rupture
@@ -1166,7 +1116,6 @@
     `;
 
   }
-
 
   function escapeHTML(value) {
 
@@ -1179,7 +1128,6 @@
 
   }
 
-
   /* =========================
      WHATSAPP
   ========================= */
@@ -1189,30 +1137,24 @@
     const product =
       products[index];
 
-
     if (!product) {
       return;
     }
 
-
     const reference =
       getReference(product);
-
 
     const designation =
       getDesignation(product);
 
-
     const brand =
       getBrand(product);
-
 
     const text =
       "Bonjour, je souhaite connaître le prix de ce produit :\n\n" +
       "Référence : " + reference + "\n" +
       "Désignation : " + designation + "\n" +
       "Marque : " + brand;
-
 
     window.open(
       "https://wa.me/213659734031?text=" +
@@ -1221,7 +1163,6 @@
     );
 
   }
-
 
   /* =========================
      CHARGEMENT PRODUITS
@@ -1236,7 +1177,6 @@
           cache: "no-store"
         });
 
-
       if (!response.ok) {
 
         throw new Error(
@@ -1245,34 +1185,22 @@
 
       }
 
-
       const data =
         await response.json();
-
 
       products =
         Array.isArray(data)
           ? data
           : (data.products || []);
 
-
       buildBrandFilter();
       buildVehicleFilter();
 
-
-      /*
-        IMPORTANT :
-        Au démarrage aucun produit
-        n'est affiché.
-      */
-
       renderProducts();
-
 
     } catch (error) {
 
       console.error(error);
-
 
       document.getElementById(
         "productTable"
@@ -1288,7 +1216,6 @@
 
   }
 
-
   /* =========================
      FILTRE MARQUES DYNAMIQUE
   ========================= */
@@ -1300,16 +1227,13 @@
         "brandFilter"
       );
 
-
     select.innerHTML =
       `<option value="">
         Toutes les marques
       </option>`;
 
-
     const brands =
       new Set();
-
 
     products.forEach(product => {
 
@@ -1317,13 +1241,11 @@
         String(getBrand(product))
           .trim();
 
-
       if (brand) {
         brands.add(brand);
       }
 
     });
-
 
     [...brands]
       .sort((a, b) =>
@@ -1338,17 +1260,14 @@
             "option"
           );
 
-
         option.value = brand;
         option.textContent = brand;
-
 
         select.appendChild(option);
 
       });
 
   }
-
 
   /* =========================
      FILTRE VEHICULE DYNAMIQUE
@@ -1361,22 +1280,18 @@
         "vehicleFilter"
       );
 
-
     select.innerHTML =
       `<option value="">
         Tous les véhicules
       </option>`;
 
-
     const vehicles =
       new Set();
-
 
     products.forEach(product => {
 
       const vehicle =
         getVehicle(product);
-
 
       String(vehicle)
         .split(/[,\n;/]+/)
@@ -1387,7 +1302,6 @@
         );
 
     });
-
 
     [...vehicles]
       .sort((a, b) =>
@@ -1402,17 +1316,14 @@
             "option"
           );
 
-
         option.value = vehicle;
         option.textContent = vehicle;
-
 
         select.appendChild(option);
 
       });
 
   }
-
 
   /* =========================
      AFFICHAGE PRODUITS PUBLIC
@@ -1427,14 +1338,12 @@
         ).value
       );
 
-
     const brand =
       normalize(
         document.getElementById(
           "brandFilter"
         ).value
       );
-
 
     const vehicle =
       normalize(
@@ -1443,18 +1352,10 @@
         ).value
       );
 
-
     const tbody =
       document.getElementById(
         "productTable"
       );
-
-
-    /*
-      IMPORTANT :
-      Aucun produit ne s'affiche
-      sans recherche ou filtre.
-    */
 
     if (!search && !brand && !vehicle) {
 
@@ -1472,7 +1373,6 @@
 
     }
 
-
     const filtered =
       products
         .map((product, index) => ({
@@ -1486,30 +1386,25 @@
               getReference(product)
             );
 
-
           const designation =
             normalize(
               getDesignation(product)
             );
-
 
           const productBrand =
             normalize(
               getBrand(product)
             );
 
-
           const productVehicle =
             normalize(
               getVehicle(product)
             );
 
-
           const dimensions =
             normalize(
               getDimensions(product)
             );
-
 
           const textMatch =
             !search ||
@@ -1519,16 +1414,13 @@
             productVehicle.includes(search) ||
             dimensions.includes(search);
 
-
           const brandMatch =
             !brand ||
             productBrand === brand;
 
-
           const vehicleMatch =
             !vehicle ||
             productVehicle.includes(vehicle);
-
 
           return (
             textMatch &&
@@ -1537,7 +1429,6 @@
           );
 
         });
-
 
     if (!filtered.length) {
 
@@ -1553,7 +1444,6 @@
 
     }
 
-
     tbody.innerHTML =
       filtered.map(({ product, index }) => {
 
@@ -1562,34 +1452,28 @@
             getReference(product)
           );
 
-
         const designation =
           escapeHTML(
             getDesignation(product)
           );
-
 
         const brandText =
           escapeHTML(
             getBrand(product)
           );
 
-
         const vehicleText =
           escapeHTML(
             getVehicle(product)
           );
-
 
         const dimensions =
           escapeHTML(
             getDimensions(product)
           );
 
-
         const stock =
           getStock(product);
-
 
         return `
 
@@ -1639,7 +1523,6 @@
 
   }
 
-
   /* =========================
      OUVRIR ADMIN
   ========================= */
@@ -1651,11 +1534,9 @@
         "Entrez le code administrateur :"
       );
 
-
     if (code === null) {
       return;
     }
-
 
     if (code !== ADMIN_CODE) {
 
@@ -1667,11 +1548,9 @@
 
     }
 
-
     document.getElementById(
       "bonPanel"
     ).style.display = "block";
-
 
     document.getElementById(
       "bonDate"
@@ -1679,7 +1558,6 @@
       new Date()
         .toISOString()
         .split("T")[0];
-
 
     if (
       !document.getElementById(
@@ -1698,17 +1576,9 @@
 
     }
 
-
-    /*
-      Pas de produit automatique.
-      L'administrateur fait une recherche
-      puis choisit le produit.
-    */
-
     renderBonItems();
     renderBonSearch();
     generateBon();
-
 
     document.getElementById(
       "bonPanel"
@@ -1718,7 +1588,6 @@
 
   }
 
-
   function closeAdmin() {
 
     document.getElementById(
@@ -1726,7 +1595,6 @@
     ).style.display = "none";
 
   }
-
 
   /* =========================
      RECHERCHE PRODUIT DANS BON
@@ -1739,16 +1607,13 @@
         "bonSearchInput"
       );
 
-
     const results =
       document.getElementById(
         "bonSearchResults"
       );
 
-
     const search =
       normalize(input.value);
-
 
     if (!search) {
 
@@ -1760,7 +1625,6 @@
       return;
 
     }
-
 
     const matches =
       products
@@ -1775,30 +1639,25 @@
               getReference(product)
             );
 
-
           const designation =
             normalize(
               getDesignation(product)
             );
-
 
           const brand =
             normalize(
               getBrand(product)
             );
 
-
           const vehicle =
             normalize(
               getVehicle(product)
             );
 
-
           const dimensions =
             normalize(
               getDimensions(product)
             );
-
 
           return (
             ref.includes(search) ||
@@ -1811,7 +1670,6 @@
         })
         .slice(0, 30);
 
-
     if (!matches.length) {
 
       results.innerHTML =
@@ -1823,7 +1681,6 @@
 
     }
 
-
     results.innerHTML =
       matches.map(({ product, index }) => {
 
@@ -1832,28 +1689,23 @@
             getReference(product)
           );
 
-
         const designation =
           escapeHTML(
             getDesignation(product)
           );
-
 
         const brand =
           escapeHTML(
             getBrand(product)
           );
 
-
         const vehicle =
           escapeHTML(
             getVehicle(product)
           );
 
-
         const stock =
           getStock(product);
-
 
         return `
 
@@ -1882,7 +1734,6 @@
 
   }
 
-
   /* =========================
      AJOUT PRODUIT AU BON
   ========================= */
@@ -1892,20 +1743,12 @@
     productIndex =
       Number(productIndex);
 
-
     const product =
       products[productIndex];
-
 
     if (!product) {
       return;
     }
-
-
-    /*
-      Si le produit existe déjà,
-      on augmente simplement la quantité.
-    */
 
     const existing =
       bonItems.find(
@@ -1913,7 +1756,6 @@
           Number(item.productIndex) ===
           productIndex
       );
-
 
     if (existing) {
 
@@ -1940,12 +1782,10 @@
 
     }
 
-
     renderBonItems();
     generateBon();
 
   }
-
 
   /* =========================
      AFFICHER PRODUITS BON
@@ -1957,7 +1797,6 @@
       document.getElementById(
         "bonProducts"
       );
-
 
     if (!bonItems.length) {
 
@@ -1972,34 +1811,28 @@
 
     }
 
-
     tbody.innerHTML =
       bonItems.map((item, index) => {
 
         const selectedIndex =
           Number(item.productIndex);
 
-
         const product =
           products[selectedIndex];
-
 
         if (!product) {
           return "";
         }
-
 
         const reference =
           escapeHTML(
             getReference(product)
           );
 
-
         const designation =
           escapeHTML(
             getDesignation(product)
           );
-
 
         const quantity =
           Math.max(
@@ -2007,17 +1840,14 @@
             Number(item.quantity) || 1
           );
 
-
         const price =
           Math.max(
             0,
             Number(item.price) || 0
           );
 
-
         const total =
           quantity * price;
-
 
         return `
 
@@ -2076,7 +1906,6 @@
 
   }
 
-
   /* =========================
      QUANTITE
   ========================= */
@@ -2092,12 +1921,10 @@
         Number(value) || 1
       );
 
-
     renderBonItems();
     generateBon();
 
   }
-
 
   /* =========================
      PRIX PRIVÉ
@@ -2114,12 +1941,10 @@
         Number(value) || 0
       );
 
-
     renderBonItems();
     generateBon();
 
   }
-
 
   /* =========================
      SUPPRIMER PRODUIT
@@ -2132,12 +1957,10 @@
       1
     );
 
-
     renderBonItems();
     generateBon();
 
   }
-
 
   /* =========================
      GENERER BON
@@ -2150,36 +1973,30 @@
         "bonNumber"
       ).value;
 
-
     const date =
       document.getElementById(
         "bonDate"
       ).value;
-
 
     const clientName =
       document.getElementById(
         "clientName"
       ).value;
 
-
     const clientPhone =
       document.getElementById(
         "clientPhone"
       ).value;
-
 
     const clientAddress =
       document.getElementById(
         "clientAddress"
       ).value;
 
-
     const payment =
       document.getElementById(
         "paymentMode"
       ).value;
-
 
     const discount =
       Math.max(
@@ -2191,63 +2008,52 @@
         ) || 0
       );
 
-
     const note =
       document.getElementById(
         "bonNote"
       ).value;
-
 
     document.getElementById(
       "previewBonNumber"
     ).textContent =
       number || "—";
 
-
     document.getElementById(
       "previewBonDate"
     ).textContent =
       date || "—";
-
 
     document.getElementById(
       "previewClientName"
     ).textContent =
       clientName || "—";
 
-
     document.getElementById(
       "previewClientPhone"
     ).textContent =
       clientPhone || "—";
-
 
     document.getElementById(
       "previewClientAddress"
     ).textContent =
       clientAddress || "—";
 
-
     document.getElementById(
       "previewPayment"
     ).textContent =
       payment || "—";
-
 
     document.getElementById(
       "previewNote"
     ).textContent =
       note || "—";
 
-
     let subtotal = 0;
-
 
     const preview =
       document.getElementById(
         "previewBonProducts"
       );
-
 
     preview.innerHTML =
       bonItems.map(item => {
@@ -2257,11 +2063,9 @@
             Number(item.productIndex)
           ];
 
-
         if (!product) {
           return "";
         }
-
 
         const quantity =
           Math.max(
@@ -2269,20 +2073,16 @@
             Number(item.quantity) || 1
           );
 
-
         const price =
           Math.max(
             0,
             Number(item.price) || 0
           );
 
-
         const total =
           quantity * price;
 
-
         subtotal += total;
-
 
         return `
 
@@ -2318,13 +2118,11 @@
 
       }).join("");
 
-
     const finalTotal =
       Math.max(
         0,
         subtotal - discount
       );
-
 
     document.getElementById(
       "previewSubtotal"
@@ -2332,13 +2130,11 @@
       subtotal.toFixed(2) +
       " DA";
 
-
     document.getElementById(
       "previewDiscount"
     ).textContent =
       discount.toFixed(2) +
       " DA";
-
 
     document.getElementById(
       "previewTotal"
@@ -2346,21 +2142,7 @@
       finalTotal.toFixed(2) +
       " DA";
 
-
-    /*
-      IMPORTANT :
-      Aucun changement n'est fait
-      dans products.
-
-      Donc le stock reste exactement
-      comme il est.
-
-      Le prix reste uniquement
-      dans l'espace BON.
-    */
-
   }
-
 
   /* =========================
      IMPRESSION
@@ -2373,7 +2155,6 @@
     window.print();
 
   }
-
 
   /* =========================
      DEMARRAGE
