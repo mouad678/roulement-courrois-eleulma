@@ -4,11 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Roulement Courrois El Eulma</title>
-<meta name="description" content="Roulements, courroies et joints SPI à El Eulma. Vente en gros et au détail pour véhicules légers, poids lourds et applications industrielles.">
+<title>Roulements & Courroies El Eulma | SKF, TIMKEN, Joints SPI</title>
+
+<meta name="description" content="Roulements, courroies et joints SPI à El Eulma, Sétif. Références automobiles, poids lourds et industrielles. Marques SKF, TIMKEN et autres marques disponibles.">
+
+<meta name="keywords" content="roulement El Eulma, roulements El Eulma, courroies El Eulma, joint SPI El Eulma, SKF Algérie, TIMKEN Algérie, pièces automobiles El Eulma">
+
+<meta name="robots" content="index, follow">
+<meta name="author" content="Roulements & Courroies El Eulma">
+
+<meta property="og:title" content="Roulements & Courroies El Eulma">
+<meta property="og:description" content="Roulements, courroies et joints SPI à El Eulma — Sétif, Algérie.">
+<meta property="og:type" content="website">
 
 <style>
-*{box-sizing:border-box;}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
 
 body{
     margin:0;
@@ -32,9 +49,11 @@ header h1{
 }
 
 header p{
-    margin:10px 0;
+    margin:10px auto;
     font-size:18px;
     color:#ddd;
+    max-width:850px;
+    line-height:1.5;
 }
 
 .container{
@@ -58,7 +77,35 @@ header p{
     font-size:16px;
 }
 
-/* RECHERCHE */
+.quick-actions{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:30px;
+}
+
+.quick-btn{
+    display:inline-block;
+    text-decoration:none;
+    color:white;
+    padding:12px 18px;
+    border-radius:9px;
+    font-weight:bold;
+}
+
+.quick-phone{
+    background:#d71920;
+}
+
+.quick-whatsapp{
+    background:#25D366;
+}
+
+.quick-facebook{
+    background:#1877F2;
+}
+
 .search-box{
     background:white;
     padding:20px;
@@ -85,10 +132,31 @@ header p{
     border-color:#d71920;
 }
 
+.filters{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:15px;
+}
+
+.filters select{
+    width:100%;
+    padding:13px;
+    border:2px solid #ddd;
+    border-radius:10px;
+    background:white;
+    font-size:15px;
+    outline:none;
+}
+
+.filters select:focus{
+    border-color:#d71920;
+}
+
 #searchStatus{
     text-align:center;
     color:#666;
-    margin:12px 0;
+    margin:15px 0;
 }
 
 .results{
@@ -98,13 +166,15 @@ header p{
 .results table{
     width:100%;
     border-collapse:collapse;
+    min-width:850px;
 }
 
 .results th,
 .results td{
-    padding:10px;
+    padding:11px;
     border-bottom:1px solid #ddd;
     text-align:left;
+    vertical-align:middle;
 }
 
 .results th{
@@ -112,7 +182,54 @@ header p{
     color:white;
 }
 
-/* PRODUITS */
+.results tr:hover{
+    background:#f7f7f7;
+}
+
+.reference{
+    font-weight:bold;
+    color:#d71920;
+}
+
+.action-btn{
+    display:inline-block;
+    background:#25D366;
+    color:white;
+    text-decoration:none;
+    padding:8px 11px;
+    border-radius:7px;
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+.product-details{
+    font-size:13px;
+    color:#555;
+    line-height:1.5;
+}
+
+.stock{
+    display:inline-block;
+    padding:5px 8px;
+    border-radius:6px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.stock-yes{
+    background:#e5f8eb;
+    color:#16843a;
+}
+
+.stock-no{
+    background:#ffe7e7;
+    color:#b00000;
+}
+
+.dimensions{
+    white-space:nowrap;
+}
+
 .products{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
@@ -145,7 +262,58 @@ header p{
     line-height:1.5;
 }
 
-/* CONTACT */
+.brands{
+    margin-top:35px;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,.10);
+    text-align:center;
+}
+
+.brand-list{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:15px;
+}
+
+.brand{
+    background:#111;
+    color:white;
+    padding:9px 15px;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+#popularSection{
+    display:none;
+}
+
+.popular-products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+
+.popular-card{
+    background:white;
+    border-left:5px solid #d71920;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 3px 10px rgba(0,0,0,.10);
+}
+
+.popular-card h3{
+    margin:0 0 8px;
+}
+
+.section-title{
+    text-align:center;
+    margin:40px 0 20px;
+}
+
 .contact{
     margin-top:35px;
     background:#111;
@@ -185,6 +353,7 @@ header p{
 .location{
     margin-top:15px;
     color:#ccc;
+    line-height:1.6;
 }
 
 footer{
@@ -196,42 +365,100 @@ footer{
 }
 
 @media(max-width:600px){
+
+    header{
+        padding:35px 15px;
+    }
+
     header h1{
         font-size:25px;
     }
 
     header p{
-        font-size:16px;
+        font-size:15px;
     }
 
     .intro h2{
         font-size:24px;
     }
 
+    .filters{
+        grid-template-columns:1fr;
+    }
+
     .results th,
     .results td{
-        font-size:14px;
+        font-size:13px;
     }
+
+    .quick-actions{
+        flex-direction:column;
+    }
+
+    .quick-btn{
+        text-align:center;
+    }
+
+    .card img{
+        height:180px;
+    }
+
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
+
     <h1>Roulements & Courroies El Eulma</h1>
-    <p>Vente de roulements, courroies et joints SPI à El Eulma pour automobiles, poids lourds et applications industrielles.</p>
-    <p>El Eulma, Sétif — Algérie</p>
+
+    <p>
+        Vente de roulements, courroies et joints SPI à El Eulma
+        pour automobiles, poids lourds et applications industrielles.
+    </p>
+
+    <p>
+        El Eulma, Sétif — Algérie
+    </p>
+
 </header>
 
 <div class="container">
 
     <div class="intro">
+
         <h2>Roulements, Courroies et Joints SPI</h2>
-        <p>Roulements, courroies et joints SPI disponibles à El Eulma.</p>
+
+        <p>
+            Recherchez facilement votre référence,
+            marque ou véhicule.
+        </p>
+
     </div>
 
-    <!-- RECHERCHE -->
+    <div class="quick-actions">
+
+        <a class="quick-btn quick-phone"
+           href="tel:+213540725525">
+            📞 Appeler
+        </a>
+
+        <a class="quick-btn quick-whatsapp"
+           href="https://wa.me/213659734031"
+           target="_blank">
+            💬 WhatsApp
+        </a>
+
+        <a class="quick-btn quick-facebook"
+           href="https://www.facebook.com/share/1EpWv87NoV/?mibextid=wwXIfr"
+           target="_blank">
+            🔵 Facebook
+        </a>
+
+    </div>
+
     <div class="search-box">
 
         <h2>Rechercher un produit</h2>
@@ -239,9 +466,23 @@ footer{
         <input
             id="search"
             type="search"
-            placeholder="Référence, désignation ou marque..."
+            placeholder="Référence, désignation, marque ou véhicule..."
             autocomplete="off"
         >
+
+        <div class="filters">
+
+            <select id="brandFilter">
+                <option value="">Toutes les marques</option>
+                <option value="SKF">SKF</option>
+                <option value="TIMKEN">TIMKEN</option>
+            </select>
+
+            <select id="vehicleFilter">
+                <option value="">Tous les véhicules</option>
+            </select>
+
+        </div>
 
         <div id="searchStatus">
             Chargement des références...
@@ -252,11 +493,17 @@ footer{
             <table id="resultsTable" hidden>
 
                 <thead>
+
                     <tr>
                         <th>Référence</th>
                         <th>Désignation</th>
                         <th>Marque</th>
+                        <th>Véhicule</th>
+                        <th>Dimensions</th>
+                        <th>Stock</th>
+                        <th>Demande</th>
                     </tr>
+
                 </thead>
 
                 <tbody id="resultsBody"></tbody>
@@ -267,62 +514,110 @@ footer{
 
     </div>
 
-    <!-- PRODUITS -->
+    <h2 class="section-title">
+        Nos produits
+    </h2>
 
     <div class="products">
 
         <div class="card">
-            <img src="IMG_0383.jpeg" alt="Roulements automobiles El Eulma">
+            <img src="IMG_0383.jpeg"
+                 alt="Roulements automobiles El Eulma"
+                 loading="lazy">
             <h3>Roulements</h3>
-            <p>Roulements pour différentes applications automobiles et industrielles.</p>
+            <p>
+                Roulements pour différentes applications
+                automobiles et industrielles.
+            </p>
         </div>
 
         <div class="card">
-            <img src="IMG_0384.jpeg" alt="Courroies automobiles El Eulma">
+            <img src="IMG_0384.jpeg"
+                 alt="Courroies automobiles El Eulma"
+                 loading="lazy">
             <h3>Courroies</h3>
-            <p>Courroies et produits de transmission.</p>
+            <p>
+                Courroies et produits de transmission.
+            </p>
         </div>
 
         <div class="card">
-            <img src="IMG_0385.jpeg" alt="Joints SPI El Eulma">
+            <img src="IMG_0385.jpeg"
+                 alt="Joints SPI El Eulma"
+                 loading="lazy">
             <h3>Joints SPI</h3>
-            <p>Joints SPI pour différentes applications.</p>
+            <p>
+                Joints SPI pour différentes applications.
+            </p>
         </div>
 
         <div class="card">
-            <img src="IMG_0386.jpeg" alt="Pièces automobiles El Eulma">
+            <img src="IMG_0386.jpeg"
+                 alt="Pièces automobiles El Eulma"
+                 loading="lazy">
             <h3>Pièces automobiles</h3>
-            <p>Différentes références disponibles selon vos besoins.</p>
+            <p>
+                Différentes références disponibles
+                selon vos besoins.
+            </p>
         </div>
 
         <div class="card">
-            <img src="IMG_0541.jpeg" alt="Produits automobiles El Eulma">
+            <img src="IMG_0541.jpeg"
+                 alt="Produits automobiles El Eulma"
+                 loading="lazy">
             <h3>Produits disponibles</h3>
-            <p>Contactez-nous pour connaître la disponibilité et la référence.</p>
+            <p>
+                Contactez-nous pour connaître
+                la disponibilité et la référence.
+            </p>
         </div>
 
         <div class="card">
-            <img src="IMG_0542.jpeg" alt="Roulements et Courroies El Eulma">
+            <img src="IMG_0542.jpeg"
+                 alt="Roulements et Courroies El Eulma"
+                 loading="lazy">
             <h3>Roulements & Courroies</h3>
-            <p>Demandez votre référence directement.</p>
+            <p>
+                Demandez votre référence directement.
+            </p>
         </div>
 
     </div>
 
-    <!-- CONTACT -->
+    <div class="brands">
+
+        <h2>Marques disponibles</h2>
+
+        <div id="brandList" class="brand-list">
+
+            <span class="brand">SKF</span>
+            <span class="brand">TIMKEN</span>
+
+        </div>
+
+    </div>
+
+    <section id="popularSection">
+
+        <h2 class="section-title">
+            Produits les plus demandés
+        </h2>
+
+        <div id="popularProducts"
+             class="popular-products"></div>
+
+    </section>
 
     <div class="contact">
 
-        <h2>Contactez Roulements & Courroies El Eulma</h2>
+        <h2>
+            Contactez Roulements & Courroies El Eulma
+        </h2>
 
-        <a class="btn phone" href="tel:0540725525">
+        <a class="btn phone"
+           href="tel:+213540725525">
             📞 0540 72 55 25
-        </a>
-
-        <a class="btn facebook"
-           href="https://www.facebook.com/share/1EpWv87NoV/?mibextid=wwXIfr"
-           target="_blank">
-            🔵 Facebook
         </a>
 
         <a class="btn whatsapp"
@@ -331,8 +626,15 @@ footer{
             💬 WhatsApp
         </a>
 
+        <a class="btn facebook"
+           href="https://www.facebook.com/share/1EpWv87NoV/?mibextid=wwXIfr"
+           target="_blank">
+            🔵 Facebook
+        </a>
+
         <div class="location">
-            📍 El Eulma, Sétif, Algérie
+            📍 El Eulma, Sétif, Algérie<br>
+            Dubai Street — près de Mosquée Ennour
         </div>
 
     </div>
@@ -343,7 +645,6 @@ footer{
     © 2026 Roulement Courrois El Eulma
 </footer>
 
-
 <script>
 
 let products = [];
@@ -352,103 +653,21 @@ const search = document.getElementById("search");
 const status = document.getElementById("searchStatus");
 const table = document.getElementById("resultsTable");
 const body = document.getElementById("resultsBody");
+const brandFilter = document.getElementById("brandFilter");
+const vehicleFilter = document.getElementById("vehicleFilter");
+const brandList = document.getElementById("brandList");
 
-
-/* تحميل المنتجات */
-
-fetch("products.json")
-
-.then(response => response.json())
-
-.then(data => {
-
-    products = data;
-
-    status.textContent =
-        products.length +
-        " références disponibles. Recherchez une référence, une désignation ou une marque.";
-
-})
-
-.catch(error => {
-
-    status.textContent =
-        "La recherche des références est temporairement indisponible.";
-
-});
-
-
-/* Recherche */
 
 function normalize(text){
 
     return String(text || "")
         .toLowerCase()
         .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g,"");
+        .replace(/[\u0300-\u036f]/g,"")
+        .trim();
 
 }
 
-
-search.addEventListener("input", function(){
-
-    const query = normalize(search.value).trim();
-
-    if(!query){
-
-        table.hidden = true;
-
-        status.textContent =
-            products.length +
-            " références disponibles. Recherchez une référence, une désignation ou une marque.";
-
-        return;
-    }
-
-
-    const words = query.split(/\s+/).filter(Boolean);
-
-
-    const matches = products.filter(product => {
-
-        const text = normalize(
-            product.reference + " " +
-            product.designation + " " +
-            product.marque
-        );
-
-        return words.every(word => text.includes(word));
-
-    }).slice(0,100);
-
-
-    body.innerHTML = matches.map(product => `
-
-        <tr>
-
-            <td>${escapeHTML(product.reference)}</td>
-
-            <td>${escapeHTML(product.designation)}</td>
-
-            <td>${escapeHTML(product.marque)}</td>
-
-        </tr>
-
-    `).join("");
-
-
-    table.hidden = matches.length === 0;
-
-
-    status.textContent =
-        matches.length > 0
-        ? matches.length + " résultat(s) trouvé(s)."
-        : "Aucun produit trouvé.";
-
-});
-
-
-/* Protection */
 
 function escapeHTML(value){
 
@@ -461,10 +680,652 @@ function escapeHTML(value){
                 ">":"&gt;",
                 '"':"&quot;",
                 "'":"&#039;"
-
             }[character];
 
         });
+
+}
+
+
+function getValue(product, keys){
+
+    for(const key of keys){
+
+        if(
+            product[key] !== undefined &&
+            product[key] !== null &&
+            String(product[key]).trim() !== ""
+        ){
+
+            return product[key];
+
+        }
+
+    }
+
+    return "";
+
+}
+
+
+function getVehicle(product){
+
+    return getValue(product, [
+
+        "vehicule",
+        "vehicle",
+        "Vehicule",
+        "Vehicle",
+        "véhicule",
+        "Véhicule",
+        "voiture",
+        "Voiture",
+        "application",
+        "Application"
+
+    ]);
+
+}
+
+
+function getDimensions(product){
+
+    const direct = getValue(product, [
+
+        "dimensions",
+        "dimension",
+        "Dimensions",
+        "Dimension"
+
+    ]);
+
+    if(direct){
+        return direct;
+    }
+
+    const inner = getValue(product, [
+
+        "diametre_interieur",
+        "diametreInterieur",
+        "inner",
+        "ID",
+        "id"
+
+    ]);
+
+    const outer = getValue(product, [
+
+        "diametre_exterieur",
+        "diametreExterieur",
+        "outer",
+        "OD",
+        "od"
+
+    ]);
+
+    const width = getValue(product, [
+
+        "largeur",
+        "width",
+        "W"
+
+    ]);
+
+    if(inner && outer && width){
+
+        return inner + " × " + outer + " × " + width;
+
+    }
+
+    return "";
+
+}
+
+
+function getStock(product){
+
+    return getValue(product, [
+
+        "stock",
+        "Stock",
+        "disponibilite",
+        "disponibilité",
+        "Disponibilite",
+        "Disponibilité",
+        "disponible",
+        "Disponible"
+
+    ]);
+
+}
+
+
+function getBrand(product){
+
+    return getValue(product, [
+
+        "marque",
+        "Marque",
+        "brand",
+        "Brand"
+
+    ]);
+
+}
+
+
+function getReference(product){
+
+    return getValue(product, [
+
+        "reference",
+        "Reference",
+        "référence",
+        "Référence",
+        "ref",
+        "Ref"
+
+    ]);
+
+}
+
+
+function getDesignation(product){
+
+    return getValue(product, [
+
+        "designation",
+        "Designation",
+        "désignation",
+        "Désignation",
+        "nom",
+        "Nom",
+        "name",
+        "Name"
+
+    ]);
+
+}
+
+
+/* AUCUN PRIX N'EST UTILISÉ */
+
+
+fetch("products.json")
+
+.then(response => {
+
+    if(!response.ok){
+
+        throw new Error("products.json introuvable");
+
+    }
+
+    return response.json();
+
+})
+
+.then(data => {
+
+    if(!Array.isArray(data)){
+
+        throw new Error("Format products.json incorrect");
+
+    }
+
+    products = data;
+
+    status.textContent =
+        products.length +
+        " références disponibles. Recherchez une référence, une désignation, une marque ou un véhicule.";
+
+    buildBrandFilter();
+    buildVehicleFilter();
+    buildPopularProducts();
+
+})
+
+.catch(error => {
+
+    console.error(error);
+
+    status.textContent =
+        "La recherche des références est temporairement indisponible.";
+
+});
+
+
+function buildBrandFilter(){
+
+    const brands = new Set();
+
+    products.forEach(product => {
+
+        const brand = getBrand(product);
+
+        if(brand){
+
+            brands.add(String(brand).trim());
+
+        }
+
+    });
+
+    const sortedBrands = Array.from(brands)
+        .sort((a,b) => a.localeCompare(b));
+
+    sortedBrands.forEach(brand => {
+
+        const exists = Array.from(
+            brandFilter.options
+        ).some(option =>
+            normalize(option.value) === normalize(brand)
+        );
+
+        if(!exists){
+
+            const option =
+                document.createElement("option");
+
+            option.value = brand;
+            option.textContent = brand;
+
+            brandFilter.appendChild(option);
+
+        }
+
+    });
+
+    brandList.innerHTML = "";
+
+    const allBrands = new Set([
+        "SKF",
+        "TIMKEN",
+        ...sortedBrands
+    ]);
+
+    Array.from(allBrands)
+        .sort((a,b) => a.localeCompare(b))
+        .forEach(brand => {
+
+            const span =
+                document.createElement("span");
+
+            span.className = "brand";
+            span.textContent = brand;
+
+            brandList.appendChild(span);
+
+        });
+
+}
+
+
+function buildVehicleFilter(){
+
+    const vehicles = new Set();
+
+    products.forEach(product => {
+
+        const vehicle = getVehicle(product);
+
+        if(vehicle){
+
+            String(vehicle)
+                .split(/[,;|]+/)
+                .map(v => v.trim())
+                .filter(Boolean)
+                .forEach(v => vehicles.add(v));
+
+        }
+
+    });
+
+    Array.from(vehicles)
+        .sort((a,b) => a.localeCompare(b))
+        .forEach(vehicle => {
+
+            const option =
+                document.createElement("option");
+
+            option.value = vehicle;
+            option.textContent = vehicle;
+
+            vehicleFilter.appendChild(option);
+
+        });
+
+}
+
+
+function whatsappLink(reference){
+
+    const message =
+        "Bonjour, je cherche la référence " +
+        reference +
+        ". Est-elle disponible et quel est son prix ?";
+
+    return "https://wa.me/213659734031?text=" +
+        encodeURIComponent(message);
+
+}
+
+
+function displayStock(value){
+
+    if(!value){
+
+        return '<span class="product-details">—</span>';
+
+    }
+
+    const normalized = normalize(value);
+
+    if(
+        normalized.includes("oui") ||
+        normalized.includes("disponible") ||
+        normalized.includes("en stock") ||
+        normalized === "yes"
+    ){
+
+        return '<span class="stock stock-yes">' +
+               escapeHTML(value) +
+               '</span>';
+
+    }
+
+    if(
+        normalized.includes("non") ||
+        normalized.includes("rupture") ||
+        normalized === "no"
+    ){
+
+        return '<span class="stock stock-no">' +
+               escapeHTML(value) +
+               '</span>';
+
+    }
+
+    return '<span class="product-details">' +
+           escapeHTML(value) +
+           '</span>';
+
+}
+
+
+function performSearch(){
+
+    const query =
+        normalize(search.value);
+
+    const selectedBrand =
+        normalize(brandFilter.value);
+
+    const selectedVehicle =
+        normalize(vehicleFilter.value);
+
+    if(
+        !query &&
+        !selectedBrand &&
+        !selectedVehicle
+    ){
+
+        table.hidden = true;
+
+        status.textContent =
+            products.length +
+            " références disponibles. Recherchez une référence, une désignation, une marque ou un véhicule.";
+
+        return;
+
+    }
+
+    const words =
+        query.split(/\s+/).filter(Boolean);
+
+    const matches =
+        products.filter(product => {
+
+            const reference =
+                normalize(getReference(product));
+
+            const designation =
+                normalize(getDesignation(product));
+
+            const brand =
+                normalize(getBrand(product));
+
+            const vehicle =
+                normalize(getVehicle(product));
+
+            const searchableText =
+                reference + " " +
+                designation + " " +
+                brand + " " +
+                vehicle;
+
+            const queryMatch =
+                words.length === 0 ||
+                words.every(word =>
+                    searchableText.includes(word)
+                );
+
+            const brandMatch =
+                !selectedBrand ||
+                brand === selectedBrand;
+
+            const vehicleMatch =
+                !selectedVehicle ||
+                vehicle
+                    .split(/[,;|]+/)
+                    .map(v => normalize(v))
+                    .includes(selectedVehicle);
+
+            return (
+                queryMatch &&
+                brandMatch &&
+                vehicleMatch
+            );
+
+        })
+        .slice(0,100);
+
+
+    body.innerHTML =
+        matches.map(product => {
+
+            const reference =
+                getReference(product);
+
+            const designation =
+                getDesignation(product);
+
+            const brand =
+                getBrand(product);
+
+            const vehicle =
+                getVehicle(product);
+
+            const dimensions =
+                getDimensions(product);
+
+            const stock =
+                getStock(product);
+
+            return `
+
+                <tr>
+
+                    <td class="reference">
+                        ${escapeHTML(reference)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(designation)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(brand || "—")}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(vehicle || "—")}
+                    </td>
+
+                    <td class="dimensions">
+                        ${escapeHTML(dimensions || "—")}
+                    </td>
+
+                    <td>
+                        ${displayStock(stock)}
+                    </td>
+
+                    <td>
+
+                        <a
+                            class="action-btn"
+                            href="${whatsappLink(reference)}"
+                            target="_blank"
+                        >
+                            Demander le prix
+                        </a>
+
+                    </td>
+
+                </tr>
+
+            `;
+
+        })
+        .join("");
+
+    table.hidden =
+        matches.length === 0;
+
+    status.textContent =
+        matches.length > 0
+        ? matches.length +
+          " résultat(s) trouvé(s)."
+        : "Aucun produit trouvé.";
+
+}
+
+
+search.addEventListener(
+    "input",
+    performSearch
+);
+
+brandFilter.addEventListener(
+    "change",
+    performSearch
+);
+
+vehicleFilter.addEventListener(
+    "change",
+    performSearch
+);
+
+
+function buildPopularProducts(){
+
+    const section =
+        document.getElementById(
+            "popularSection"
+        );
+
+    const container =
+        document.getElementById(
+            "popularProducts"
+        );
+
+    const popular =
+        products.filter(product => {
+
+            const value =
+                getValue(product, [
+
+                    "populaire",
+                    "Populaire",
+                    "popular",
+                    "Popular",
+                    "mostRequested",
+                    "most_requested",
+                    "demande",
+                    "Demande"
+
+                ]);
+
+            if(!value){
+                return false;
+            }
+
+            const normalized =
+                normalize(value);
+
+            return (
+                normalized === "oui" ||
+                normalized === "yes" ||
+                normalized === "true" ||
+                normalized === "1" ||
+                normalized === "populaire"
+            );
+
+        })
+        .slice(0,6);
+
+    if(popular.length === 0){
+
+        return;
+
+    }
+
+    container.innerHTML =
+        popular.map(product => {
+
+            const reference =
+                getReference(product);
+
+            const designation =
+                getDesignation(product);
+
+            const brand =
+                getBrand(product);
+
+            return `
+
+                <div class="popular-card">
+
+                    <h3>
+                        ${escapeHTML(reference)}
+                    </h3>
+
+                    <div>
+                        ${escapeHTML(designation)}
+                    </div>
+
+                    <div class="product-details">
+                        ${escapeHTML(brand)}
+                    </div>
+
+                    <br>
+
+                    <a
+                        class="action-btn"
+                        href="${whatsappLink(reference)}"
+                        target="_blank"
+                    >
+                        Demander le prix
+                    </a>
+
+                </div>
+
+            `;
+
+        })
+        .join("");
+
+    section.style.display = "block";
 
 }
 
