@@ -312,6 +312,55 @@
       font-size: 13px;
     }
 
+    /* =========================
+       RECHERCHE BON
+    ========================= */
+
+    .bon-search-box {
+      background: #f7f7f7;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+
+    .bon-search-results {
+      max-height: 320px;
+      overflow-y: auto;
+    }
+
+    .bon-result {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 7px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .bon-result:hover {
+      background: #f1f1f1;
+    }
+
+    .bon-result strong {
+      color: #b00000;
+    }
+
+    .bon-result small {
+      display: block;
+      color: #555;
+      margin-top: 4px;
+    }
+
+    .empty-message {
+      color: #666;
+      padding: 15px;
+      text-align: center;
+    }
+
     @media (max-width: 700px) {
       header h1 {
         font-size: 22px;
@@ -368,7 +417,10 @@
   <p>Site officiel — Roulements, Courroies & Joint SPI — El Eulma</p>
 
   <div class="buttons">
-    <a class="call" href="tel:0540725525">☎ Appeler</a>
+
+    <a class="call" href="tel:0540725525">
+      ☎ Appeler
+    </a>
 
     <a class="whatsapp"
        href="https://wa.me/213659734031"
@@ -381,6 +433,7 @@
        target="_blank">
       Facebook
     </a>
+
   </div>
 
   <button class="admin-btn" onclick="openAdmin()">
@@ -391,47 +444,78 @@
 
 <div class="container">
 
-  <!-- RECHERCHE PUBLIQUE -->
+  <!-- =========================
+       RECHERCHE PUBLIQUE
+  ========================= -->
+
   <div class="search-box">
+
     <h2>Rechercher un produit</h2>
 
     <div class="filters">
 
       <div>
+
         <label>Recherche</label>
+
         <input
           type="text"
           id="searchInput"
-          placeholder="Référence, désignation, marque, véhicule..."
+          placeholder="Référence, désignation, marque, véhicule, dimensions..."
           oninput="renderProducts()"
         >
+
       </div>
 
+
       <div>
+
         <label>Marque</label>
-        <select id="brandFilter" onchange="renderProducts()">
-          <option value="">Toutes les marques</option>
-          <option value="SKF">SKF</option>
-          <option value="TIMKEN">TIMKEN</option>
+
+        <select
+          id="brandFilter"
+          onchange="renderProducts()">
+
+          <option value="">
+            Toutes les marques
+          </option>
+
         </select>
+
       </div>
 
+
       <div>
+
         <label>Véhicule</label>
-        <select id="vehicleFilter" onchange="renderProducts()">
-          <option value="">Tous les véhicules</option>
+
+        <select
+          id="vehicleFilter"
+          onchange="renderProducts()">
+
+          <option value="">
+            Tous les véhicules
+          </option>
+
         </select>
+
       </div>
 
     </div>
+
   </div>
 
 
-  <!-- PRODUITS -->
+  <!-- =========================
+       PRODUITS
+  ========================= -->
+
   <div class="table-wrap">
 
     <table>
+
       <thead>
+
         <tr>
           <th>Référence</th>
           <th>Désignation</th>
@@ -441,12 +525,18 @@
           <th>Stock</th>
           <th>Demande</th>
         </tr>
+
       </thead>
 
+
       <tbody id="productTable">
+
         <tr>
-          <td colspan="7">Chargement...</td>
+          <td colspan="7">
+            Chargement...
+          </td>
         </tr>
+
       </tbody>
 
     </table>
@@ -454,23 +544,34 @@
   </div>
 
 
-  <!-- GALERIE -->
+  <!-- =========================
+       GALERIE
+  ========================= -->
+
   <div class="section">
+
     <h2>Nos produits</h2>
 
     <div class="gallery">
+
       <img src="IMG_0383.jpeg" alt="Roulements">
       <img src="IMG_0384.jpeg" alt="Roulements">
       <img src="IMG_0385.jpeg" alt="Roulements">
       <img src="IMG_0386.jpeg" alt="Roulements">
       <img src="IMG_0541.jpeg" alt="Courroies">
       <img src="IMG_0542.jpeg" alt="Courroies">
+
     </div>
+
   </div>
 
 
-  <!-- LOCALISATION -->
+  <!-- =========================
+       LOCALISATION
+  ========================= -->
+
   <div class="section">
+
     <h2>📍 Où nous trouver</h2>
 
     <p>
@@ -483,8 +584,11 @@
       target="_blank"
       class="request-btn"
       style="display:inline-block;text-decoration:none;">
+
       Ouvrir Google Maps
+
     </a>
+
   </div>
 
 
@@ -501,53 +605,145 @@
       La création d'un BON ne diminue pas le stock.
     </p>
 
+
+    <!-- INFORMATIONS BON -->
+
     <div class="bon-grid">
 
       <div>
+
         <label>N° BON</label>
-        <input id="bonNumber" type="text">
+
+        <input
+          id="bonNumber"
+          type="text">
+
       </div>
 
+
       <div>
+
         <label>Date</label>
-        <input id="bonDate" type="date">
+
+        <input
+          id="bonDate"
+          type="date">
+
       </div>
 
+
       <div>
+
         <label>Nom du client</label>
-        <input id="clientName" type="text" placeholder="Nom du client">
+
+        <input
+          id="clientName"
+          type="text"
+          placeholder="Nom du client">
+
       </div>
 
+
       <div>
+
         <label>Téléphone</label>
-        <input id="clientPhone" type="text" placeholder="Téléphone">
+
+        <input
+          id="clientPhone"
+          type="text"
+          placeholder="Téléphone">
+
       </div>
 
+
       <div>
+
         <label>Adresse / Informations</label>
-        <input id="clientAddress" type="text" placeholder="Adresse ou information">
+
+        <input
+          id="clientAddress"
+          type="text"
+          placeholder="Adresse ou information">
+
       </div>
 
+
       <div>
+
         <label>Mode de paiement</label>
+
         <select id="paymentMode">
-          <option value="">Choisir</option>
-          <option>Espèces</option>
-          <option>Virement</option>
-          <option>Chèque</option>
-          <option>Autre</option>
+
+          <option value="">
+            Choisir
+          </option>
+
+          <option>
+            Espèces
+          </option>
+
+          <option>
+            Virement
+          </option>
+
+          <option>
+            Chèque
+          </option>
+
+          <option>
+            Autre
+          </option>
+
         </select>
+
       </div>
 
     </div>
 
+
+    <!-- =========================
+         RECHERCHE PRODUIT BON
+    ========================= -->
+
+    <h3>Ajouter un produit au BON</h3>
+
+    <div class="bon-search-box">
+
+      <label>
+        Rechercher le produit
+      </label>
+
+      <input
+        id="bonSearchInput"
+        type="text"
+        placeholder="Référence, désignation, marque, véhicule, dimensions..."
+        oninput="renderBonSearch()">
+
+      <div
+        id="bonSearchResults"
+        class="bon-search-results">
+
+        <div class="empty-message">
+          Écrivez une recherche pour trouver un produit.
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         PRODUITS DU BON
+    ========================= -->
 
     <h3>Produits du BON</h3>
 
     <div class="bon-products">
 
       <table>
+
         <thead>
+
           <tr>
             <th>Produit</th>
             <th>Référence</th>
@@ -556,7 +752,9 @@
             <th>Total</th>
             <th></th>
           </tr>
+
         </thead>
+
 
         <tbody id="bonProducts"></tbody>
 
@@ -565,60 +763,84 @@
     </div>
 
 
+    <!-- ACTIONS -->
+
     <div class="bon-actions">
 
-      <button class="btn-green" onclick="addBonProduct()">
-        + Ajouter produit
-      </button>
+      <button
+        class="btn-red"
+        onclick="generateBon()">
 
-      <button class="btn-red" onclick="generateBon()">
         Générer / Actualiser BON
+
       </button>
 
-      <button class="btn-black" onclick="printBon()">
+
+      <button
+        class="btn-black"
+        onclick="printBon()">
+
         🖨 Imprimer
+
       </button>
 
-      <button class="btn-gray" onclick="closeAdmin()">
+
+      <button
+        class="btn-gray"
+        onclick="closeAdmin()">
+
         Fermer
+
       </button>
 
     </div>
 
 
+    <!-- REMISE -->
+
     <div style="margin-top:15px;max-width:300px;">
 
       <label>Remise</label>
+
       <input
         id="discount"
         type="number"
         min="0"
         value="0"
-        oninput="generateBon()"
-      >
+        oninput="generateBon()">
 
     </div>
 
 
+    <!-- NOTE -->
+
     <div>
+
       <label>Note</label>
 
       <textarea
         id="bonNote"
         rows="3"
         placeholder="Note éventuelle..."></textarea>
+
     </div>
 
 
-    <!-- APERÇU BON -->
+    <!-- =========================
+         APERÇU BON
+    ========================= -->
 
     <div id="bonPreview">
 
       <div class="bon-head">
 
-        <h2>ROULEMENT COURROIS ELEULMA</h2>
+        <h2>
+          ROULEMENT COURROIS ELEULMA
+        </h2>
 
-        <strong>MOUAD & NEDJMO</strong>
+        <strong>
+          MOUAD & NEDJMO
+        </strong>
 
         <p>
           El Eulma — Rue Dubai<br>
@@ -637,25 +859,30 @@
           <span id="previewBonNumber"></span>
         </div>
 
+
         <div>
           <strong>Date :</strong>
           <span id="previewBonDate"></span>
         </div>
+
 
         <div>
           <strong>Client :</strong>
           <span id="previewClientName"></span>
         </div>
 
+
         <div>
           <strong>Téléphone :</strong>
           <span id="previewClientPhone"></span>
         </div>
 
+
         <div>
           <strong>Adresse :</strong>
           <span id="previewClientAddress"></span>
         </div>
+
 
         <div>
           <strong>Paiement :</strong>
@@ -668,6 +895,7 @@
       <table class="bon-preview-table">
 
         <thead>
+
           <tr>
             <th>Produit</th>
             <th>Référence</th>
@@ -675,7 +903,9 @@
             <th>Prix</th>
             <th>Total</th>
           </tr>
+
         </thead>
+
 
         <tbody id="previewBonProducts"></tbody>
 
@@ -685,33 +915,66 @@
       <div class="totals">
 
         <div class="total-line">
-          <span>Sous-total</span>
-          <span id="previewSubtotal">0.00 DA</span>
+
+          <span>
+            Sous-total
+          </span>
+
+          <span id="previewSubtotal">
+            0.00 DA
+          </span>
+
         </div>
+
 
         <div class="total-line">
-          <span>Remise</span>
-          <span id="previewDiscount">0.00 DA</span>
+
+          <span>
+            Remise
+          </span>
+
+          <span id="previewDiscount">
+            0.00 DA
+          </span>
+
         </div>
 
+
         <div class="total-line grand-total">
-          <span>TOTAL</span>
-          <span id="previewTotal">0.00 DA</span>
+
+          <span>
+            TOTAL
+          </span>
+
+          <span id="previewTotal">
+            0.00 DA
+          </span>
+
         </div>
 
       </div>
 
 
       <div style="margin-top:20px;">
-        <strong>Note :</strong>
-        <span id="previewNote"></span>
+
+        <strong>
+          Note :
+        </strong>
+
+        <span id="previewNote">
+        </span>
+
       </div>
 
 
       <div class="bon-footer">
+
         Merci pour votre confiance.
+
         <br>
+
         ROULEMENT COURROIS ELEULMA — MOUAD & NEDJMO
+
       </div>
 
     </div>
@@ -721,9 +984,15 @@
 </div>
 
 
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
-  <strong>ROULEMENT COURROIS ELEULMA</strong>
+  <strong>
+    ROULEMENT COURROIS ELEULMA
+  </strong>
 
   <p>
     Roulements, Courroies & Joint SPI — El Eulma
@@ -740,6 +1009,7 @@
 
   let products = [];
   let bonItems = [];
+
 
   /* =========================
      CODE ADMIN
@@ -829,7 +1099,9 @@
 
     const number = Number(value);
 
-    return Number.isFinite(number) ? number : 0;
+    return Number.isFinite(number)
+      ? number
+      : 0;
 
   }
 
@@ -838,11 +1110,19 @@
 
     if (stock > 0) {
 
-      return `<span class="stock-ok">${stock}</span>`;
+      return `
+        <span class="stock-ok">
+          ${stock}
+        </span>
+      `;
 
     }
 
-    return `<span class="stock-zero">Rupture</span>`;
+    return `
+      <span class="stock-zero">
+        Rupture
+      </span>
+    `;
 
   }
 
@@ -863,20 +1143,36 @@
      WHATSAPP
   ========================= */
 
-  function requestPrice(product) {
+  function requestPrice(index) {
 
-    const reference = getReference(product);
-    const designation = getDesignation(product);
-    const brand = getBrand(product);
+    const product =
+      products[index];
 
-    const message =
-      "Bonjour, je souhaite connaître le prix de ce produit :%0A%0A" +
-      "Référence : " + encodeURIComponent(reference) +
-      "%0ADésignation : " + encodeURIComponent(designation) +
-      "%0AMarque : " + encodeURIComponent(brand);
+    if (!product) {
+      return;
+    }
+
+
+    const reference =
+      getReference(product);
+
+    const designation =
+      getDesignation(product);
+
+    const brand =
+      getBrand(product);
+
+
+    const text =
+      "Bonjour, je souhaite connaître le prix de ce produit :\n\n" +
+      "Référence : " + reference + "\n" +
+      "Désignation : " + designation + "\n" +
+      "Marque : " + brand;
+
 
     window.open(
-      "https://wa.me/213659734031?text=" + message,
+      "https://wa.me/213659734031?text=" +
+      encodeURIComponent(text),
       "_blank"
     );
 
@@ -891,28 +1187,50 @@
 
     try {
 
-      const response = await fetch("products.json", {
-        cache: "no-store"
-      });
+      const response =
+        await fetch("products.json", {
+          cache: "no-store"
+        });
+
 
       if (!response.ok) {
-        throw new Error("products.json introuvable");
+        throw new Error(
+          "products.json introuvable"
+        );
       }
 
-      products = await response.json();
 
-      if (!Array.isArray(products)) {
-        products = products.products || [];
-      }
+      const data =
+        await response.json();
 
+
+      products =
+        Array.isArray(data)
+          ? data
+          : (data.products || []);
+
+
+      buildBrandFilter();
       buildVehicleFilter();
+
+      /*
+        IMPORTANT :
+        Au démarrage aucun produit
+        n'est affiché.
+      */
+
       renderProducts();
+
 
     } catch (error) {
 
       console.error(error);
 
-      document.getElementById("productTable").innerHTML =
+
+      document.getElementById(
+        "productTable"
+      ).innerHTML =
+
         `<tr>
           <td colspan="7">
             Impossible de charger les produits.
@@ -925,38 +1243,58 @@
 
 
   /* =========================
-     FILTRE VEHICULE
-  ========================= */
+     FILTRE MARQUES DYNAMIQUE
+     ========================= */
 
-  function buildVehicleFilter() {
+  function buildBrandFilter() {
 
     const select =
-      document.getElementById("vehicleFilter");
+      document.getElementById(
+        "brandFilter"
+      );
 
-    const vehicles = new Set();
+
+    select.innerHTML =
+      `<option value="">
+        Toutes les marques
+      </option>`;
+
+
+    const brands =
+      new Set();
+
 
     products.forEach(product => {
 
-      const vehicle = getVehicle(product);
+      const brand =
+        String(getBrand(product))
+          .trim();
 
-      String(vehicle)
-        .split(",")
-        .map(v => v.trim())
-        .filter(Boolean)
-        .forEach(v => vehicles.add(v));
+
+      if (brand) {
+        brands.add(brand);
+      }
 
     });
 
 
-    [...vehicles]
-      .sort()
-      .forEach(vehicle => {
+    [...brands]
+      .sort((a, b) =>
+        normalize(a).localeCompare(
+          normalize(b)
+        )
+      )
+      .forEach(brand => {
 
         const option =
-          document.createElement("option");
+          document.createElement(
+            "option"
+          );
 
-        option.value = vehicle;
-        option.textContent = vehicle;
+
+        option.value = brand;
+        option.textContent = brand;
+
 
         select.appendChild(option);
 
@@ -966,69 +1304,198 @@
 
 
   /* =========================
-     AFFICHAGE PRODUITS
-  ========================= */
+     FILTRE VEHICULE DYNAMIQUE
+     ========================= */
+
+  function buildVehicleFilter() {
+
+    const select =
+      document.getElementById(
+        "vehicleFilter"
+      );
+
+
+    select.innerHTML =
+      `<option value="">
+        Tous les véhicules
+      </option>`;
+
+
+    const vehicles =
+      new Set();
+
+
+    products.forEach(product => {
+
+      const vehicle =
+        getVehicle(product);
+
+
+      String(vehicle)
+        .split(/[,\n;/]+/)
+        .map(v => v.trim())
+        .filter(Boolean)
+        .forEach(v =>
+          vehicles.add(v)
+        );
+
+    });
+
+
+    [...vehicles]
+      .sort((a, b) =>
+        normalize(a).localeCompare(
+          normalize(b)
+        )
+      )
+      .forEach(vehicle => {
+
+        const option =
+          document.createElement(
+            "option"
+          );
+
+
+        option.value = vehicle;
+        option.textContent = vehicle;
+
+
+        select.appendChild(option);
+
+      });
+
+  }
+
+
+  /* =========================
+     AFFICHAGE PRODUITS PUBLIC
+     ========================= */
 
   function renderProducts() {
 
     const search =
       normalize(
-        document.getElementById("searchInput").value
+        document.getElementById(
+          "searchInput"
+        ).value
       );
+
 
     const brand =
       normalize(
-        document.getElementById("brandFilter").value
+        document.getElementById(
+          "brandFilter"
+        ).value
       );
+
 
     const vehicle =
       normalize(
-        document.getElementById("vehicleFilter").value
+        document.getElementById(
+          "vehicleFilter"
+        ).value
       );
 
 
-    const filtered = products.filter(product => {
-
-      const ref = normalize(getReference(product));
-      const designation = normalize(getDesignation(product));
-      const productBrand = normalize(getBrand(product));
-      const productVehicle = normalize(getVehicle(product));
-      const dimensions = normalize(getDimensions(product));
-
-
-      const textMatch =
-        !search ||
-        ref.includes(search) ||
-        designation.includes(search) ||
-        productBrand.includes(search) ||
-        productVehicle.includes(search) ||
-        dimensions.includes(search);
-
-
-      const brandMatch =
-        !brand ||
-        productBrand === brand;
-
-
-      const vehicleMatch =
-        !vehicle ||
-        productVehicle.includes(vehicle);
-
-
-      return textMatch &&
-             brandMatch &&
-             vehicleMatch;
-
-    });
-
-
     const tbody =
-      document.getElementById("productTable");
+      document.getElementById(
+        "productTable"
+      );
+
+
+    /*
+      IMPORTANT :
+      Aucun produit ne s'affiche
+      sans recherche ou filtre.
+    */
+
+    if (!search && !brand && !vehicle) {
+
+      tbody.innerHTML =
+
+        `<tr>
+          <td colspan="7">
+            Écrivez une référence, une désignation,
+            une marque, un véhicule ou choisissez un filtre
+            pour rechercher.
+          </td>
+        </tr>`;
+
+      return;
+
+    }
+
+
+    const filtered =
+      products
+        .map((product, index) => ({
+          product,
+          index
+        }))
+        .filter(({ product }) => {
+
+          const ref =
+            normalize(
+              getReference(product)
+            );
+
+
+          const designation =
+            normalize(
+              getDesignation(product)
+            );
+
+
+          const productBrand =
+            normalize(
+              getBrand(product)
+            );
+
+
+          const productVehicle =
+            normalize(
+              getVehicle(product)
+            );
+
+
+          const dimensions =
+            normalize(
+              getDimensions(product)
+            );
+
+
+          const textMatch =
+            !search ||
+            ref.includes(search) ||
+            designation.includes(search) ||
+            productBrand.includes(search) ||
+            productVehicle.includes(search) ||
+            dimensions.includes(search);
+
+
+          const brandMatch =
+            !brand ||
+            productBrand === brand;
+
+
+          const vehicleMatch =
+            !vehicle ||
+            productVehicle.includes(vehicle);
+
+
+          return (
+            textMatch &&
+            brandMatch &&
+            vehicleMatch
+          );
+
+        });
 
 
     if (!filtered.length) {
 
       tbody.innerHTML =
+
         `<tr>
           <td colspan="7">
             Aucun produit trouvé.
@@ -1041,53 +1508,90 @@
 
 
     tbody.innerHTML =
-      filtered.map(product => {
+      filtered.map(({ product, index }) => {
 
         const reference =
-          escapeHTML(getReference(product));
+          escapeHTML(
+            getReference(product)
+          );
+
 
         const designation =
-          escapeHTML(getDesignation(product));
+          escapeHTML(
+            getDesignation(product)
+          );
 
-        const brand =
-          escapeHTML(getBrand(product));
 
-        const vehicle =
-          escapeHTML(getVehicle(product));
+        const brandText =
+          escapeHTML(
+            getBrand(product)
+          );
+
+
+        const vehicleText =
+          escapeHTML(
+            getVehicle(product)
+          );
+
 
         const dimensions =
-          escapeHTML(getDimensions(product));
+          escapeHTML(
+            getDimensions(product)
+          );
+
 
         const stock =
           getStock(product);
 
 
         return `
+
           <tr>
 
-            <td>${reference}</td>
+            <td>
+              ${reference}
+            </td>
 
-            <td>${designation}</td>
 
-            <td>${brand}</td>
+            <td>
+              ${designation}
+            </td>
 
-            <td>${vehicle || "—"}</td>
 
-            <td>${dimensions || "—"}</td>
+            <td>
+              ${brandText}
+            </td>
 
-            <td>${displayStock(stock)}</td>
+
+            <td>
+              ${vehicleText || "—"}
+            </td>
+
+
+            <td>
+              ${dimensions || "—"}
+            </td>
+
+
+            <td>
+              ${displayStock(stock)}
+            </td>
+
 
             <td>
 
               <button
                 class="request-btn"
-                onclick='requestPrice(${JSON.stringify(product).replace(/'/g, "&#39;")})'>
+                onclick="requestPrice(${index})">
+
                 Demander le prix
+
               </button>
 
             </td>
 
           </tr>
+
         `;
 
       }).join("");
@@ -1097,12 +1601,14 @@
 
   /* =========================
      OUVRIR ADMIN
-  ========================= */
+     ========================= */
 
   function openAdmin() {
 
     const code =
-      prompt("Entrez le code administrateur :");
+      prompt(
+        "Entrez le code administrateur :"
+      );
 
 
     if (code === null) {
@@ -1112,81 +1618,324 @@
 
     if (code !== ADMIN_CODE) {
 
-      alert("Code incorrect.");
+      alert(
+        "Code incorrect."
+      );
 
       return;
 
     }
 
 
-    document.getElementById("bonPanel").style.display =
-      "block";
+    document.getElementById(
+      "bonPanel"
+    ).style.display = "block";
 
 
-    document.getElementById("bonDate").value =
-      new Date().toISOString().split("T")[0];
+    document.getElementById(
+      "bonDate"
+    ).value =
+      new Date()
+        .toISOString()
+        .split("T")[0];
 
 
-    if (!document.getElementById("bonNumber").value) {
+    if (
+      !document.getElementById(
+        "bonNumber"
+      ).value
+    ) {
 
-      document.getElementById("bonNumber").value =
+      document.getElementById(
+        "bonNumber"
+      ).value =
         "BON-" +
-        new Date().getTime().toString().slice(-6);
+        new Date()
+          .getTime()
+          .toString()
+          .slice(-6);
 
     }
 
 
-    if (bonItems.length === 0) {
-      addBonProduct();
-    }
+    /*
+      Pas de produit automatique.
+      L'administrateur fait une recherche
+      puis choisit le produit.
+    */
 
-
+    renderBonItems();
+    renderBonSearch();
     generateBon();
 
-    document.getElementById("bonPanel")
-      .scrollIntoView({
-        behavior: "smooth"
-      });
+
+    document.getElementById(
+      "bonPanel"
+    ).scrollIntoView({
+      behavior: "smooth"
+    });
 
   }
 
 
   function closeAdmin() {
 
-    document.getElementById("bonPanel").style.display =
-      "none";
+    document.getElementById(
+      "bonPanel"
+    ).style.display = "none";
+
+  }
+
+
+  /* =========================
+     RECHERCHE PRODUIT DANS BON
+     ========================= */
+
+  function renderBonSearch() {
+
+    const input =
+      document.getElementById(
+        "bonSearchInput"
+      );
+
+
+    const results =
+      document.getElementById(
+        "bonSearchResults"
+      );
+
+
+    const search =
+      normalize(input.value);
+
+
+    if (!search) {
+
+      results.innerHTML =
+        `<div class="empty-message">
+          Écrivez une recherche pour trouver un produit.
+        </div>`;
+
+      return;
+
+    }
+
+
+    const matches =
+      products
+        .map((product, index) => ({
+          product,
+          index
+        }))
+        .filter(({ product }) => {
+
+          const ref =
+            normalize(
+              getReference(product)
+            );
+
+
+          const designation =
+            normalize(
+              getDesignation(product)
+            );
+
+
+          const brand =
+            normalize(
+              getBrand(product)
+            );
+
+
+          const vehicle =
+            normalize(
+              getVehicle(product)
+            );
+
+
+          const dimensions =
+            normalize(
+              getDimensions(product)
+            );
+
+
+          return (
+            ref.includes(search) ||
+            designation.includes(search) ||
+            brand.includes(search) ||
+            vehicle.includes(search) ||
+            dimensions.includes(search)
+          );
+
+        })
+        .slice(0, 30);
+
+
+    if (!matches.length) {
+
+      results.innerHTML =
+        `<div class="empty-message">
+          Aucun produit trouvé.
+        </div>`;
+
+      return;
+
+    }
+
+
+    results.innerHTML =
+      matches.map(({ product, index }) => {
+
+        const ref =
+          escapeHTML(
+            getReference(product)
+          );
+
+
+        const designation =
+          escapeHTML(
+            getDesignation(product)
+          );
+
+
+        const brand =
+          escapeHTML(
+            getBrand(product)
+          );
+
+
+        const vehicle =
+          escapeHTML(
+            getVehicle(product)
+          );
+
+
+        const stock =
+          getStock(product);
+
+
+        return `
+
+          <button
+            type="button"
+            class="bon-result"
+            onclick="addBonProduct(${index})">
+
+            <strong>
+              ${ref}
+            </strong>
+
+            — ${designation}
+
+            <small>
+              Marque : ${brand || "—"}
+              ${vehicle ? " | Véhicule : " + vehicle : ""}
+              | Stock : ${stock}
+            </small>
+
+          </button>
+
+        `;
+
+      }).join("");
 
   }
 
 
   /* =========================
      AJOUT PRODUIT AU BON
-  ========================= */
+     ========================= */
 
-  function addBonProduct() {
+  function addBonProduct(productIndex) {
 
-    bonItems.push({
+    productIndex =
+      Number(productIndex);
 
-      productIndex: -1,
-      quantity: 1,
-      price: 0
 
-    });
+    const product =
+      products[productIndex];
+
+
+    if (!product) {
+      return;
+    }
+
+
+    /*
+      Si le produit existe déjà,
+      on augmente simplement la quantité.
+    */
+
+    const existing =
+      bonItems.find(
+        item =>
+          Number(item.productIndex) ===
+          productIndex
+      );
+
+
+    if (existing) {
+
+      existing.quantity =
+        Math.max(
+          1,
+          Number(existing.quantity) + 1
+        );
+
+    } else {
+
+      bonItems.push({
+
+        productIndex:
+          productIndex,
+
+        quantity:
+          1,
+
+        price:
+          0
+
+      });
+
+    }
 
 
     renderBonItems();
+    generateBon();
+
+
+    /*
+      On garde la recherche disponible
+      pour ajouter d'autres produits.
+    */
 
   }
 
 
   /* =========================
      AFFICHER PRODUITS BON
-  ========================= */
+     ========================= */
 
   function renderBonItems() {
 
     const tbody =
-      document.getElementById("bonProducts");
+      document.getElementById(
+        "bonProducts"
+      );
+
+
+    if (!bonItems.length) {
+
+      tbody.innerHTML =
+        `<tr>
+          <td colspan="6">
+            Aucun produit ajouté au BON.
+          </td>
+        </tr>`;
+
+      return;
+
+    }
 
 
     tbody.innerHTML =
@@ -1196,55 +1945,43 @@
           Number(item.productIndex);
 
 
-        let productOptions =
-          `<option value="-1">
-            Choisir un produit
-          </option>`;
-
-
-        products.forEach((product, productIndex) => {
-
-          const selected =
-            productIndex === selectedIndex
-              ? "selected"
-              : "";
-
-
-          productOptions += `
-            <option value="${productIndex}" ${selected}>
-              ${escapeHTML(
-                getReference(product) +
-                " — " +
-                getDesignation(product) +
-                " — " +
-                getBrand(product)
-              )}
-            </option>
-          `;
-
-        });
-
-
         const product =
           products[selectedIndex];
 
 
+        if (!product) {
+          return "";
+        }
+
+
         const reference =
-          product
-            ? escapeHTML(getReference(product))
-            : "—";
+          escapeHTML(
+            getReference(product)
+          );
 
 
-        const price =
-          Number(item.price) || 0;
+        const designation =
+          escapeHTML(
+            getDesignation(product)
+          );
 
 
         const quantity =
-          Number(item.quantity) || 1;
+          Math.max(
+            1,
+            Number(item.quantity) || 1
+          );
+
+
+        const price =
+          Math.max(
+            0,
+            Number(item.price) || 0
+          );
 
 
         const total =
-          price * quantity;
+          quantity * price;
 
 
         return `
@@ -1252,14 +1989,7 @@
           <tr>
 
             <td>
-
-              <select
-                onchange="selectBonProduct(${index}, this.value)">
-
-                ${productOptions}
-
-              </select>
-
+              ${designation}
             </td>
 
 
@@ -1274,8 +2004,7 @@
                 type="number"
                 min="1"
                 value="${quantity}"
-                onchange="changeBonQuantity(${index}, this.value)"
-              >
+                onchange="changeBonQuantity(${index}, this.value)">
 
             </td>
 
@@ -1287,8 +2016,7 @@
                 min="0"
                 step="0.01"
                 value="${price}"
-                onchange="changeBonPrice(${index}, this.value)"
-              >
+                onchange="changeBonPrice(${index}, this.value)">
 
             </td>
 
@@ -1303,7 +2031,9 @@
               <button
                 class="btn-red"
                 onclick="removeBonProduct(${index})">
+
                 X
+
               </button>
 
             </td>
@@ -1318,34 +2048,20 @@
 
 
   /* =========================
-     CHOIX PRODUIT
-  ========================= */
+     QUANTITE
+     ========================= */
 
-  function selectBonProduct(index, productIndex) {
-
-    productIndex =
-      Number(productIndex);
-
-
-    bonItems[index].productIndex =
-      productIndex;
-
-
-    /*
-      Le prix reste privé et est saisi
-      uniquement dans l'espace administrateur.
-    */
-
-    renderBonItems();
-    generateBon();
-
-  }
-
-
-  function changeBonQuantity(index, value) {
+  function changeBonQuantity(
+    index,
+    value
+  ) {
 
     bonItems[index].quantity =
-      Math.max(1, Number(value) || 1);
+      Math.max(
+        1,
+        Number(value) || 1
+      );
+
 
     renderBonItems();
     generateBon();
@@ -1353,20 +2069,39 @@
   }
 
 
-  function changeBonPrice(index, value) {
+  /* =========================
+     PRIX PRIVÉ
+     ========================= */
+
+  function changeBonPrice(
+    index,
+    value
+  ) {
 
     bonItems[index].price =
-      Math.max(0, Number(value) || 0);
+      Math.max(
+        0,
+        Number(value) || 0
+      );
+
 
     renderBonItems();
     generateBon();
 
   }
 
+
+  /* =========================
+     SUPPRIMER PRODUIT
+     ========================= */
 
   function removeBonProduct(index) {
 
-    bonItems.splice(index, 1);
+    bonItems.splice(
+      index,
+      1
+    );
+
 
     renderBonItems();
     generateBon();
@@ -1376,74 +2111,121 @@
 
   /* =========================
      GENERER BON
-  ========================= */
+     ========================= */
 
   function generateBon() {
 
     const number =
-      document.getElementById("bonNumber").value;
+      document.getElementById(
+        "bonNumber"
+      ).value;
+
 
     const date =
-      document.getElementById("bonDate").value;
+      document.getElementById(
+        "bonDate"
+      ).value;
+
 
     const clientName =
-      document.getElementById("clientName").value;
+      document.getElementById(
+        "clientName"
+      ).value;
+
 
     const clientPhone =
-      document.getElementById("clientPhone").value;
+      document.getElementById(
+        "clientPhone"
+      ).value;
+
 
     const clientAddress =
-      document.getElementById("clientAddress").value;
+      document.getElementById(
+        "clientAddress"
+      ).value;
+
 
     const payment =
-      document.getElementById("paymentMode").value;
+      document.getElementById(
+        "paymentMode"
+      ).value;
+
 
     const discount =
       Math.max(
         0,
         Number(
-          document.getElementById("discount").value
+          document.getElementById(
+            "discount"
+          ).value
         ) || 0
       );
 
+
     const note =
-      document.getElementById("bonNote").value;
+      document.getElementById(
+        "bonNote"
+      ).value;
 
 
-    document.getElementById("previewBonNumber")
-      .textContent = number || "—";
+    document.getElementById(
+      "previewBonNumber"
+    ).textContent =
+      number || "—";
 
-    document.getElementById("previewBonDate")
-      .textContent = date || "—";
 
-    document.getElementById("previewClientName")
-      .textContent = clientName || "—";
+    document.getElementById(
+      "previewBonDate"
+    ).textContent =
+      date || "—";
 
-    document.getElementById("previewClientPhone")
-      .textContent = clientPhone || "—";
 
-    document.getElementById("previewClientAddress")
-      .textContent = clientAddress || "—";
+    document.getElementById(
+      "previewClientName"
+    ).textContent =
+      clientName || "—";
 
-    document.getElementById("previewPayment")
-      .textContent = payment || "—";
 
-    document.getElementById("previewNote")
-      .textContent = note || "—";
+    document.getElementById(
+      "previewClientPhone"
+    ).textContent =
+      clientPhone || "—";
+
+
+    document.getElementById(
+      "previewClientAddress"
+    ).textContent =
+      clientAddress || "—";
+
+
+    document.getElementById(
+      "previewPayment"
+    ).textContent =
+      payment || "—";
+
+
+    document.getElementById(
+      "previewNote"
+    ).textContent =
+      note || "—";
 
 
     let subtotal = 0;
 
 
     const preview =
-      document.getElementById("previewBonProducts");
+      document.getElementById(
+        "previewBonProducts"
+      );
 
 
     preview.innerHTML =
       bonItems.map(item => {
 
         const product =
-          products[Number(item.productIndex)];
+          products[
+            Number(item.productIndex)
+          ];
 
 
         if (!product) {
@@ -1452,10 +2234,18 @@
 
 
         const quantity =
-          Number(item.quantity) || 1;
+          Math.max(
+            1,
+            Number(item.quantity) || 1
+          );
+
 
         const price =
-          Number(item.price) || 0;
+          Math.max(
+            0,
+            Number(item.price) || 0
+          );
+
 
         const total =
           quantity * price;
@@ -1469,20 +2259,28 @@
           <tr>
 
             <td>
-              ${escapeHTML(getDesignation(product))}
+              ${escapeHTML(
+                getDesignation(product)
+              )}
             </td>
 
+
             <td>
-              ${escapeHTML(getReference(product))}
+              ${escapeHTML(
+                getReference(product)
+              )}
             </td>
+
 
             <td>
               ${quantity}
             </td>
 
+
             <td>
               ${price.toFixed(2)} DA
             </td>
+
 
             <td>
               ${total.toFixed(2)} DA
@@ -1496,28 +2294,43 @@
 
 
     const finalTotal =
-      Math.max(0, subtotal - discount);
+      Math.max(
+        0,
+        subtotal - discount
+      );
 
 
-    document.getElementById("previewSubtotal")
-      .textContent =
-        subtotal.toFixed(2) + " DA";
+    document.getElementById(
+      "previewSubtotal"
+    ).textContent =
+      subtotal.toFixed(2) +
+      " DA";
 
 
-    document.getElementById("previewDiscount")
-      .textContent =
-        discount.toFixed(2) + " DA";
+    document.getElementById(
+      "previewDiscount"
+    ).textContent =
+      discount.toFixed(2) +
+      " DA";
 
 
-    document.getElementById("previewTotal")
-      .textContent =
-        finalTotal.toFixed(2) + " DA";
+    document.getElementById(
+      "previewTotal"
+    ).textContent =
+      finalTotal.toFixed(2) +
+      " DA";
 
 
     /*
       IMPORTANT :
-      Aucun changement n'est fait dans products.
-      Donc le stock reste exactement comme il est.
+      Aucun changement n'est fait
+      dans products.
+
+      Donc le stock reste exactement
+      comme il est.
+
+      Le prix reste uniquement
+      dans l'espace BON.
     */
 
   }
@@ -1525,7 +2338,7 @@
 
   /* =========================
      IMPRESSION
-  ========================= */
+     ========================= */
 
   function printBon() {
 
@@ -1538,7 +2351,7 @@
 
   /* =========================
      DEMARRAGE
-  ========================= */
+     ========================= */
 
   loadProducts();
 
