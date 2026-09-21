@@ -8,6 +8,10 @@
   <meta name="description" content="Site officiel — Roulements, Courroies & Joint SPI — El Eulma. Recherchez vos références, marques, véhicules et dimensions.">
   <meta name="keywords" content="roulement, courroie, joint SPI, SKF, TIMKEN, El Eulma">
 
+  <!-- LOGO / ICÔNE DU SITE -->
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
   <style>
     * {
       box-sizing: border-box;
@@ -25,6 +29,19 @@
       color: white;
       padding: 22px 15px;
       text-align: center;
+    }
+
+    /* LOGO */
+    .site-logo {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      background: white;
+      padding: 4px;
+      margin: 0 auto 10px;
+      display: block;
+      box-shadow: 0 3px 12px rgba(0,0,0,.35);
     }
 
     header h1 {
@@ -371,6 +388,12 @@
     }
 
     @media (max-width: 700px) {
+
+      .site-logo {
+        width: 100px;
+        height: 100px;
+      }
+
       header h1 {
         font-size: 22px;
       }
@@ -393,6 +416,7 @@
     }
 
     @media print {
+
       body * {
         visibility: hidden !important;
       }
@@ -415,6 +439,7 @@
         size: A4;
         margin: 10mm;
       }
+
     }
   </style>
 </head>
@@ -422,6 +447,12 @@
 <body>
 
 <header>
+
+  <!-- LOGO -->
+  <img
+    class="site-logo"
+    src="logo.png"
+    alt="ROULEMENT COURROIS ELEULMA">
 
   <h1
     class="secret-admin-name"
@@ -599,7 +630,6 @@
 
   <!-- =========================
        ESPACE BON PRIVÉ
-       INVISIBLE POUR LES CLIENTS
   ========================= -->
 
   <div id="bonPanel">
@@ -610,8 +640,6 @@
       Cette partie est réservée à l'administrateur.
       La création d'un BON ne diminue pas le stock.
     </p>
-
-    <!-- INFORMATIONS BON -->
 
     <div class="bon-grid">
 
@@ -700,9 +728,7 @@
 
     </div>
 
-    <!-- =========================
-         RECHERCHE PRODUIT BON
-    ========================= -->
+    <!-- RECHERCHE PRODUIT BON -->
 
     <h3>Ajouter un produit au BON</h3>
 
@@ -730,9 +756,7 @@
 
     </div>
 
-    <!-- =========================
-         PRODUITS DU BON
-    ========================= -->
+    <!-- PRODUITS DU BON -->
 
     <h3>Produits du BON</h3>
 
@@ -758,8 +782,6 @@
       </table>
 
     </div>
-
-    <!-- ACTIONS -->
 
     <div class="bon-actions">
 
@@ -811,9 +833,7 @@
 
     </div>
 
-    <!-- =========================
-         APERÇU BON
-    ========================= -->
+    <!-- APERÇU BON -->
 
     <div id="bonPreview">
 
@@ -953,10 +973,6 @@
   </div>
 
 </div>
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer>
 
