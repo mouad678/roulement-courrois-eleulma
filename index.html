@@ -45,7 +45,6 @@
     }
 
     .buttons a,
-    .admin-btn,
     button {
       border: 0;
       padding: 11px 15px;
@@ -68,12 +67,6 @@
     .facebook {
       background: #1877f2;
       color: white;
-    }
-
-    .admin-btn {
-      background: #111;
-      color: white;
-      margin-top: 10px;
     }
 
     .container {
@@ -361,6 +354,15 @@
       text-align: center;
     }
 
+    /* =========================
+       MOUAD & NEDJMO SECRET
+    ========================= */
+
+    .secret-admin-name {
+      cursor: pointer;
+      user-select: none;
+    }
+
     @media (max-width: 700px) {
       header h1 {
         font-size: 22px;
@@ -413,8 +415,12 @@
 <body>
 
 <header>
+
   <h1>ROULEMENT COURROIS ELEULMA</h1>
-  <p>Site officiel — Roulements, Courroies & Joint SPI — El Eulma</p>
+
+  <p>
+    Site officiel — Roulements, Courroies & Joint SPI — El Eulma
+  </p>
 
   <div class="buttons">
 
@@ -422,23 +428,26 @@
       ☎ Appeler
     </a>
 
-    <a class="whatsapp"
-       href="https://wa.me/213659734031"
-       target="_blank">
+    <a
+      class="whatsapp"
+      href="https://wa.me/213659734031"
+      target="_blank">
+
       WhatsApp
+
     </a>
 
-    <a class="facebook"
-       href="https://www.facebook.com/share/1EpWv87NoV/?mibextid=wwXIfr"
-       target="_blank">
+    <a
+      class="facebook"
+      href="https://www.facebook.com/share/1EpWv87NoV/?mibextid=wwXIfr"
+      target="_blank">
+
       Facebook
+
     </a>
 
   </div>
 
-  <button class="admin-btn" onclick="openAdmin()">
-    🔒 Espace BON — Administrateur
-  </button>
 </header>
 
 
@@ -462,11 +471,9 @@
           type="text"
           id="searchInput"
           placeholder="Référence, désignation, marque, véhicule, dimensions..."
-          oninput="renderProducts()"
-        >
+          oninput="renderProducts">
 
       </div>
-
 
       <div>
 
@@ -483,7 +490,6 @@
         </select>
 
       </div>
-
 
       <div>
 
@@ -527,7 +533,6 @@
         </tr>
 
       </thead>
-
 
       <tbody id="productTable">
 
@@ -594,6 +599,7 @@
 
   <!-- =========================
        ESPACE BON PRIVÉ
+       INVISIBLE POUR LES CLIENTS
   ========================= -->
 
   <div id="bonPanel">
@@ -620,7 +626,6 @@
 
       </div>
 
-
       <div>
 
         <label>Date</label>
@@ -630,7 +635,6 @@
           type="date">
 
       </div>
-
 
       <div>
 
@@ -643,7 +647,6 @@
 
       </div>
 
-
       <div>
 
         <label>Téléphone</label>
@@ -655,7 +658,6 @@
 
       </div>
 
-
       <div>
 
         <label>Adresse / Informations</label>
@@ -666,7 +668,6 @@
           placeholder="Adresse ou information">
 
       </div>
-
 
       <div>
 
@@ -755,7 +756,6 @@
 
         </thead>
 
-
         <tbody id="bonProducts"></tbody>
 
       </table>
@@ -775,7 +775,6 @@
 
       </button>
 
-
       <button
         class="btn-black"
         onclick="printBon()">
@@ -783,7 +782,6 @@
         🖨 Imprimer
 
       </button>
-
 
       <button
         class="btn-gray"
@@ -838,8 +836,12 @@
           ROULEMENT COURROIS ELEULMA
         </h2>
 
-        <strong>
+        <strong
+          class="secret-admin-name"
+          onclick="secretBonAccess()">
+
           MOUAD & NEDJMO
+
         </strong>
 
         <p>
@@ -859,30 +861,25 @@
           <span id="previewBonNumber"></span>
         </div>
 
-
         <div>
           <strong>Date :</strong>
           <span id="previewBonDate"></span>
         </div>
-
 
         <div>
           <strong>Client :</strong>
           <span id="previewClientName"></span>
         </div>
 
-
         <div>
           <strong>Téléphone :</strong>
           <span id="previewClientPhone"></span>
         </div>
 
-
         <div>
           <strong>Adresse :</strong>
           <span id="previewClientAddress"></span>
         </div>
-
 
         <div>
           <strong>Paiement :</strong>
@@ -906,7 +903,6 @@
 
         </thead>
 
-
         <tbody id="previewBonProducts"></tbody>
 
       </table>
@@ -926,7 +922,6 @@
 
         </div>
 
-
         <div class="total-line">
 
           <span>
@@ -938,7 +933,6 @@
           </span>
 
         </div>
-
 
         <div class="total-line grand-total">
 
@@ -961,8 +955,7 @@
           Note :
         </strong>
 
-        <span id="previewNote">
-        </span>
+        <span id="previewNote"></span>
 
       </div>
 
@@ -1010,12 +1003,57 @@
   let products = [];
   let bonItems = [];
 
-
   /* =========================
      CODE ADMIN
   ========================= */
 
   const ADMIN_CODE = "MOUAD26";
+
+
+  /* =========================
+     ACCÈS BON SECRET
+     5 PRESSIONS
+  ========================= */
+
+  let adminTapCount = 0;
+  let adminTapTimer = null;
+
+
+  function secretBonAccess() {
+
+    adminTapCount++;
+
+    clearTimeout(adminTapTimer);
+
+
+    /*
+      5 pressions successives
+    */
+
+    if (adminTapCount >= 5) {
+
+      adminTapCount = 0;
+
+      openAdmin();
+
+      return;
+
+    }
+
+
+    /*
+      Si l'utilisateur attend plus
+      de 2,5 secondes, on remet
+      le compteur à zéro.
+    */
+
+    adminTapTimer = setTimeout(() => {
+
+      adminTapCount = 0;
+
+    }, 2500);
+
+  }
 
 
   /* =========================
@@ -1097,7 +1135,9 @@
       p.Quantity ??
       0;
 
+
     const number = Number(value);
+
 
     return Number.isFinite(number)
       ? number
@@ -1117,6 +1157,7 @@
       `;
 
     }
+
 
     return `
       <span class="stock-zero">
@@ -1148,6 +1189,7 @@
     const product =
       products[index];
 
+
     if (!product) {
       return;
     }
@@ -1156,8 +1198,10 @@
     const reference =
       getReference(product);
 
+
     const designation =
       getDesignation(product);
+
 
     const brand =
       getBrand(product);
@@ -1194,9 +1238,11 @@
 
 
       if (!response.ok) {
+
         throw new Error(
           "products.json introuvable"
         );
+
       }
 
 
@@ -1212,6 +1258,7 @@
 
       buildBrandFilter();
       buildVehicleFilter();
+
 
       /*
         IMPORTANT :
@@ -1244,7 +1291,7 @@
 
   /* =========================
      FILTRE MARQUES DYNAMIQUE
-     ========================= */
+  ========================= */
 
   function buildBrandFilter() {
 
@@ -1305,7 +1352,7 @@
 
   /* =========================
      FILTRE VEHICULE DYNAMIQUE
-     ========================= */
+  ========================= */
 
   function buildVehicleFilter() {
 
@@ -1369,7 +1416,7 @@
 
   /* =========================
      AFFICHAGE PRODUITS PUBLIC
-     ========================= */
+  ========================= */
 
   function renderProducts() {
 
@@ -1552,31 +1599,25 @@
               ${reference}
             </td>
 
-
             <td>
               ${designation}
             </td>
-
 
             <td>
               ${brandText}
             </td>
 
-
             <td>
               ${vehicleText || "—"}
             </td>
-
 
             <td>
               ${dimensions || "—"}
             </td>
 
-
             <td>
               ${displayStock(stock)}
             </td>
-
 
             <td>
 
@@ -1601,7 +1642,7 @@
 
   /* =========================
      OUVRIR ADMIN
-     ========================= */
+  ========================= */
 
   function openAdmin() {
 
@@ -1689,7 +1730,7 @@
 
   /* =========================
      RECHERCHE PRODUIT DANS BON
-     ========================= */
+  ========================= */
 
   function renderBonSearch() {
 
@@ -1844,7 +1885,7 @@
 
   /* =========================
      AJOUT PRODUIT AU BON
-     ========================= */
+  ========================= */
 
   function addBonProduct(productIndex) {
 
@@ -1903,18 +1944,12 @@
     renderBonItems();
     generateBon();
 
-
-    /*
-      On garde la recherche disponible
-      pour ajouter d'autres produits.
-    */
-
   }
 
 
   /* =========================
      AFFICHER PRODUITS BON
-     ========================= */
+  ========================= */
 
   function renderBonItems() {
 
@@ -1992,11 +2027,9 @@
               ${designation}
             </td>
 
-
             <td>
               ${reference}
             </td>
-
 
             <td>
 
@@ -2007,7 +2040,6 @@
                 onchange="changeBonQuantity(${index}, this.value)">
 
             </td>
-
 
             <td>
 
@@ -2020,11 +2052,9 @@
 
             </td>
 
-
             <td>
               ${total.toFixed(2)} DA
             </td>
-
 
             <td>
 
@@ -2049,7 +2079,7 @@
 
   /* =========================
      QUANTITE
-     ========================= */
+  ========================= */
 
   function changeBonQuantity(
     index,
@@ -2071,7 +2101,7 @@
 
   /* =========================
      PRIX PRIVÉ
-     ========================= */
+  ========================= */
 
   function changeBonPrice(
     index,
@@ -2093,7 +2123,7 @@
 
   /* =========================
      SUPPRIMER PRODUIT
-     ========================= */
+  ========================= */
 
   function removeBonProduct(index) {
 
@@ -2111,7 +2141,7 @@
 
   /* =========================
      GENERER BON
-     ========================= */
+  ========================= */
 
   function generateBon() {
 
@@ -2264,23 +2294,19 @@
               )}
             </td>
 
-
             <td>
               ${escapeHTML(
                 getReference(product)
               )}
             </td>
 
-
             <td>
               ${quantity}
             </td>
 
-
             <td>
               ${price.toFixed(2)} DA
             </td>
-
 
             <td>
               ${total.toFixed(2)} DA
@@ -2338,7 +2364,7 @@
 
   /* =========================
      IMPRESSION
-     ========================= */
+  ========================= */
 
   function printBon() {
 
@@ -2351,7 +2377,7 @@
 
   /* =========================
      DEMARRAGE
-     ========================= */
+  ========================= */
 
   loadProducts();
 
