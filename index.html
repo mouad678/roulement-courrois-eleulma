@@ -1357,15 +1357,26 @@
         "productTable"
       );
 
-    if (!search && !brand && !vehicle) {
+    /*
+      RÈGLE DE RECHERCHE :
+
+      - Recherche seule = OK
+      - Véhicule seul = OK
+      - Marque seule = PAS DE RÉSULTAT
+      - Recherche + Marque = OK
+      - Recherche + Véhicule = OK
+      - Marque + Véhicule sans recherche = PAS DE RÉSULTAT
+    */
+
+    if (!search && !vehicle) {
 
       tbody.innerHTML =
 
         `<tr>
           <td colspan="7">
             Écrivez une référence, une désignation,
-            une marque, un véhicule ou choisissez un filtre
-            pour rechercher.
+            une marque, un véhicule ou des dimensions,
+            ou choisissez un véhicule pour rechercher.
           </td>
         </tr>`;
 
@@ -1414,9 +1425,16 @@
             productVehicle.includes(search) ||
             dimensions.includes(search);
 
+          /*
+            La marque sélectionnée ne fonctionne
+            comme filtre que lorsqu'une recherche
+            texte est également présente.
+          */
+
           const brandMatch =
             !brand ||
-            productBrand === brand;
+            (search &&
+             productBrand.includes(brand));
 
           const vehicleMatch =
             !vehicle ||
