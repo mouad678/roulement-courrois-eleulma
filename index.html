@@ -108,7 +108,6 @@
       overflow-x: auto;
       background: white;
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
     table {
@@ -127,10 +126,6 @@
     td {
       padding: 10px;
       border-bottom: 1px solid #ddd;
-    }
-
-    tr:hover {
-      background: #fafafa;
     }
 
     .stock-ok {
@@ -153,6 +148,24 @@
       font-weight: bold;
     }
 
+    /* PHOTOS GRANDES ET UNE SOUS L'AUTRE */
+    .products-images {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .products-images img {
+      width: 100%;
+      height: auto;
+      max-height: 650px;
+      object-fit: contain;
+      border-radius: 10px;
+      background: #ddd;
+    }
+
+    /* LOCALISATION */
     .location {
       background: white;
       margin-top: 20px;
@@ -173,21 +186,6 @@
       font-weight: bold;
     }
 
-    .products-images {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .products-images img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 8px;
-      background: #ddd;
-    }
-
     .popular {
       background: white;
       margin-top: 20px;
@@ -206,6 +204,16 @@
       color: #777;
     }
 
+    /* ORDINATEUR */
+    @media (min-width: 701px) {
+      .products-images {
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    /* TELEPHONE */
     @media (max-width: 700px) {
       header h1 {
         font-size: 21px;
@@ -221,7 +229,7 @@
       }
 
       .products-images img {
-        height: 150px;
+        max-height: none;
       }
     }
   </style>
@@ -236,8 +244,12 @@
 
 <div class="container">
 
+  <!-- CONTACT -->
   <div class="actions">
-    <a class="call" href="tel:+213540725525">☎ Appeler</a>
+
+    <a class="call" href="tel:+213540725525">
+      ☎ Appeler
+    </a>
 
     <a class="whatsapp"
        href="https://wa.me/213659734031"
@@ -252,9 +264,12 @@
        rel="noopener">
       Facebook
     </a>
+
   </div>
 
+  <!-- RECHERCHE -->
   <div class="search-box">
+
     <input
       type="text"
       id="searchInput"
@@ -262,6 +277,7 @@
     >
 
     <div class="filters">
+
       <select id="brandFilter">
         <option value="">Toutes les marques</option>
       </select>
@@ -269,11 +285,16 @@
       <select id="vehicleFilter">
         <option value="">Tous les véhicules</option>
       </select>
+
     </div>
+
   </div>
 
+  <!-- RESULTATS -->
   <div class="table-container">
+
     <table>
+
       <thead>
         <tr>
           <th>Référence</th>
@@ -286,26 +307,41 @@
         </tr>
       </thead>
 
-      <tbody id="results">
-        <tr>
-          <td colspan="7">Chargement...</td>
-        </tr>
-      </tbody>
+      <tbody id="results"></tbody>
+
     </table>
+
   </div>
 
+  <!-- PRODUITS POPULAIRES SI PRESENTS DANS LES DONNEES -->
   <div id="popularSection"></div>
 
+  <!-- PHOTOS -->
   <div class="products-images">
-    <img src="IMG_0383.jpeg" alt="Roulements et pièces automobiles">
-    <img src="IMG_0384.jpeg" alt="Roulements automobiles">
-    <img src="IMG_0385.jpeg" alt="Courroies automobiles">
-    <img src="IMG_0386.jpeg" alt="Pièces automobiles">
-    <img src="IMG_0541.jpeg" alt="Roulements El Eulma">
-    <img src="IMG_0542.jpeg" alt="Courroies El Eulma">
+
+    <img src="IMG_0383.jpeg"
+         alt="Roulements et pièces automobiles">
+
+    <img src="IMG_0384.jpeg"
+         alt="Roulements automobiles">
+
+    <img src="IMG_0385.jpeg"
+         alt="Courroies automobiles">
+
+    <img src="IMG_0386.jpeg"
+         alt="Pièces automobiles">
+
+    <img src="IMG_0541.jpeg"
+         alt="Roulements El Eulma">
+
+    <img src="IMG_0542.jpeg"
+         alt="Courroies El Eulma">
+
   </div>
 
+  <!-- LOCALISATION -->
   <div class="location">
+
     <h2>📍 Localisation</h2>
 
     <p>
@@ -320,6 +356,7 @@
       rel="noopener">
       📍 Voir sur Google Maps
     </a>
+
   </div>
 
 </div>
@@ -328,66 +365,121 @@
   ROULEMENT COURROIS ELEULMA — MOUAD & NEDJMO
 </footer>
 
+
 <script>
+
   let products = [];
 
   const whatsappNumber = "213659734031";
 
+
+  /* NORMALISATION */
+
   function normalize(value) {
+
     return String(value ?? "")
       .toLowerCase()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
       .trim();
+
   }
+
+
+  /* INFORMATIONS PRODUIT */
 
   function getReference(p) {
-    return p.reference ?? p.ref ?? p.Reference ?? p.ReferenceProduit ?? "";
+
+    return p.reference ??
+           p.ref ??
+           p.Reference ??
+           p.ReferenceProduit ??
+           "";
+
   }
+
 
   function getDesignation(p) {
-    return p.designation ?? p.Designation ?? p.nom ?? p.name ?? "";
+
+    return p.designation ??
+           p.Designation ??
+           p.nom ??
+           p.name ??
+           "";
+
   }
+
 
   function getBrand(p) {
-    return p.marque ?? p.brand ?? p.Marque ?? "";
+
+    return p.marque ??
+           p.brand ??
+           p.Marque ??
+           "";
+
   }
 
+
   function getVehicle(p) {
+
     return p.vehicule ??
            p.vehicle ??
            p.Véhicule ??
            p.voiture ??
            p.application ??
            "";
+
   }
 
+
   function getDimensions(p) {
+
     if (p.dimensions) return p.dimensions;
+
     if (p.dimension) return p.dimension;
 
-    const inner = p.interieur ?? p.inner ?? p.diametreInterieur;
-    const outer = p.exterieur ?? p.outer ?? p.diametreExterieur;
-    const width = p.largeur ?? p.width;
+    const inner =
+      p.interieur ??
+      p.inner ??
+      p.diametreInterieur;
+
+    const outer =
+      p.exterieur ??
+      p.outer ??
+      p.diametreExterieur;
+
+    const width =
+      p.largeur ??
+      p.width;
 
     if (inner || outer || width) {
+
       return [inner, outer, width]
         .filter(Boolean)
         .join(" × ");
+
     }
 
     return "";
+
   }
 
+
   function getStock(p) {
+
     return p.stock ??
            p.Stock ??
            p.disponibilite ??
            p.availability ??
            "";
+
   }
 
+
+  /* STOCK */
+
   function displayStock(value) {
+
     const v = normalize(value);
 
     if (
@@ -396,7 +488,9 @@
       v === "disponible" ||
       v === "en stock"
     ) {
+
       return `<span class="stock-ok">${value}</span>`;
+
     }
 
     if (
@@ -404,67 +498,129 @@
       v === "no" ||
       v === "rupture"
     ) {
+
       return `<span class="stock-no">${value}</span>`;
+
     }
 
     return value || "";
+
   }
 
+
+  /* SECURITE HTML */
+
   function escapeHTML(value) {
+
     return String(value ?? "")
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#039;");
+
   }
+
+
+  /* MARQUES */
 
   function buildBrandFilter() {
-    const select = document.getElementById("brandFilter");
-    const brands = new Set(["SKF", "TIMKEN"]);
+
+    const select =
+      document.getElementById("brandFilter");
+
+    const brands =
+      new Set(["SKF", "TIMKEN"]);
+
 
     products.forEach(p => {
+
       const brand = getBrand(p);
-      if (brand) brands.add(String(brand).trim());
+
+      if (brand) {
+
+        brands.add(
+          String(brand).trim()
+        );
+
+      }
+
     });
 
+
     [...brands]
-      .sort((a, b) => a.localeCompare(b))
+      .sort((a, b) =>
+        a.localeCompare(b)
+      )
       .forEach(brand => {
-        const option = document.createElement("option");
+
+        const option =
+          document.createElement("option");
+
         option.value = brand;
         option.textContent = brand;
+
         select.appendChild(option);
+
       });
+
   }
 
+
+  /* VEHICULES UNIQUEMENT PRESENTS DANS LES DONNEES */
+
   function buildVehicleFilter() {
-    const select = document.getElementById("vehicleFilter");
-    const vehicles = new Set();
+
+    const select =
+      document.getElementById("vehicleFilter");
+
+    const vehicles =
+      new Set();
+
 
     products.forEach(p => {
-      const vehicle = getVehicle(p);
+
+      const vehicle =
+        getVehicle(p);
 
       if (vehicle) {
+
         String(vehicle)
           .split(",")
           .map(v => v.trim())
           .filter(Boolean)
-          .forEach(v => vehicles.add(v));
+          .forEach(v =>
+            vehicles.add(v)
+          );
+
       }
+
     });
 
+
     [...vehicles]
-      .sort((a, b) => a.localeCompare(b))
+      .sort((a, b) =>
+        a.localeCompare(b)
+      )
       .forEach(vehicle => {
-        const option = document.createElement("option");
+
+        const option =
+          document.createElement("option");
+
         option.value = vehicle;
         option.textContent = vehicle;
+
         select.appendChild(option);
+
       });
+
   }
 
+
+  /* WHATSAPP */
+
   function requestPrice(reference) {
+
     const message =
       `Bonjour, je cherche la référence ${reference}. Est-elle disponible et quel est son prix ?`;
 
@@ -472,165 +628,367 @@
       `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
     window.open(url, "_blank");
+
   }
+
+
+  /* RECHERCHE */
 
   function performSearch() {
-    const search = normalize(
-      document.getElementById("searchInput").value
-    );
 
-    const brandFilter = normalize(
-      document.getElementById("brandFilter").value
-    );
+    const search =
+      normalize(
+        document.getElementById("searchInput").value
+      );
 
-    const vehicleFilter = normalize(
-      document.getElementById("vehicleFilter").value
-    );
+    const brandFilter =
+      normalize(
+        document.getElementById("brandFilter").value
+      );
 
-    const filtered = products.filter(p => {
+    const vehicleFilter =
+      normalize(
+        document.getElementById("vehicleFilter").value
+      );
 
-      const reference = normalize(getReference(p));
-      const designation = normalize(getDesignation(p));
-      const brand = normalize(getBrand(p));
-      const vehicle = normalize(getVehicle(p));
 
-      const matchesSearch =
-        !search ||
-        reference.includes(search) ||
-        designation.includes(search) ||
-        brand.includes(search) ||
-        vehicle.includes(search);
+    /* RIEN N'EST AFFICHÉ AU DEPART */
 
-      const matchesBrand =
-        !brandFilter ||
-        brand === brandFilter;
+    if (
+      !search &&
+      !brandFilter &&
+      !vehicleFilter
+    ) {
 
-      const matchesVehicle =
-        !vehicleFilter ||
-        vehicle.includes(vehicleFilter);
+      document.getElementById("results").innerHTML = "";
 
-      return matchesSearch && matchesBrand && matchesVehicle;
-    });
-
-    displayResults(filtered);
-  }
-
-  function displayResults(list) {
-    const results = document.getElementById("results");
-
-    if (!list.length) {
-      results.innerHTML =
-        `<tr><td colspan="7">Aucun produit trouvé.</td></tr>`;
       return;
+
     }
 
-    results.innerHTML = list.map(p => {
 
-      const reference = getReference(p);
-      const designation = getDesignation(p);
-      const brand = getBrand(p);
-      const vehicle = getVehicle(p);
-      const dimensions = getDimensions(p);
-      const stock = getStock(p);
+    const filtered =
+      products.filter(p => {
 
-      return `
-        <tr>
-          <td>${escapeHTML(reference)}</td>
-          <td>${escapeHTML(designation)}</td>
-          <td>${escapeHTML(brand)}</td>
-          <td>${escapeHTML(vehicle)}</td>
-          <td>${escapeHTML(dimensions)}</td>
-          <td>${displayStock(escapeHTML(stock))}</td>
-          <td>
-            <button
-              class="request-btn"
-              onclick="requestPrice('${String(reference)
-                .replace(/'/g, "\\'")
-                .replace(/"/g, "&quot;")}')">
-              Demander le prix
-            </button>
-          </td>
-        </tr>
-      `;
-    }).join("");
+        const reference =
+          normalize(getReference(p));
+
+        const designation =
+          normalize(getDesignation(p));
+
+        const brand =
+          normalize(getBrand(p));
+
+        const vehicle =
+          normalize(getVehicle(p));
+
+
+        const matchesSearch =
+
+          !search ||
+
+          reference.includes(search) ||
+
+          designation.includes(search) ||
+
+          brand.includes(search) ||
+
+          vehicle.includes(search);
+
+
+        const matchesBrand =
+
+          !brandFilter ||
+
+          brand === brandFilter;
+
+
+        const matchesVehicle =
+
+          !vehicleFilter ||
+
+          vehicle.includes(vehicleFilter);
+
+
+        return (
+          matchesSearch &&
+          matchesBrand &&
+          matchesVehicle
+        );
+
+      });
+
+
+    displayResults(filtered);
+
   }
 
+
+  /* AFFICHAGE */
+
+  function displayResults(list) {
+
+    const results =
+      document.getElementById("results");
+
+
+    if (!list.length) {
+
+      results.innerHTML =
+        `<tr>
+          <td colspan="7">
+            Aucun produit trouvé.
+          </td>
+        </tr>`;
+
+      return;
+
+    }
+
+
+    results.innerHTML =
+      list.map(p => {
+
+        const reference =
+          getReference(p);
+
+        const designation =
+          getDesignation(p);
+
+        const brand =
+          getBrand(p);
+
+        const vehicle =
+          getVehicle(p);
+
+        const dimensions =
+          getDimensions(p);
+
+        const stock =
+          getStock(p);
+
+
+        const safeReference =
+          String(reference)
+            .replace(/\\/g, "\\\\")
+            .replace(/'/g, "\\'");
+
+
+        return `
+
+          <tr>
+
+            <td>
+              ${escapeHTML(reference)}
+            </td>
+
+            <td>
+              ${escapeHTML(designation)}
+            </td>
+
+            <td>
+              ${escapeHTML(brand)}
+            </td>
+
+            <td>
+              ${escapeHTML(vehicle)}
+            </td>
+
+            <td>
+              ${escapeHTML(dimensions)}
+            </td>
+
+            <td>
+              ${displayStock(
+                escapeHTML(stock)
+              )}
+            </td>
+
+            <td>
+
+              <button
+                class="request-btn"
+                onclick="requestPrice('${safeReference}')">
+
+                Demander le prix
+
+              </button>
+
+            </td>
+
+          </tr>
+
+        `;
+
+      }).join("");
+
+  }
+
+
+  /* PRODUITS LES PLUS DEMANDES
+     UNIQUEMENT SI L'INFORMATION EXISTE */
+
   function buildPopularProducts() {
+
     const popularFields = [
+
       "populaire",
       "popular",
       "mostRequested",
       "most_requested",
       "demande",
       "requested"
+
     ];
 
-    const popular = products.filter(p =>
-      popularFields.some(field => {
-        const value = p[field];
 
-        return (
-          value === true ||
-          normalize(value) === "oui" ||
-          normalize(value) === "yes" ||
-          normalize(value) === "true"
-        );
-      })
-    );
+    const popular =
+      products.filter(p =>
+
+        popularFields.some(field => {
+
+          const value =
+            p[field];
+
+          return (
+
+            value === true ||
+
+            normalize(value) === "oui" ||
+
+            normalize(value) === "yes" ||
+
+            normalize(value) === "true"
+
+          );
+
+        })
+
+      );
+
 
     if (!popular.length) return;
 
-    const section = document.getElementById("popularSection");
+
+    const section =
+      document.getElementById(
+        "popularSection"
+      );
+
 
     section.innerHTML = `
+
       <div class="popular">
-        <h2>Produits les plus demandés</h2>
+
+        <h2>
+          Produits les plus demandés
+        </h2>
+
         ${popular.map(p => `
+
           <p>
-            <strong>${escapeHTML(getReference(p))}</strong>
-            — ${escapeHTML(getDesignation(p))}
+
+            <strong>
+              ${escapeHTML(
+                getReference(p)
+              )}
+            </strong>
+
+            —
+            ${escapeHTML(
+              getDesignation(p)
+            )}
+
           </p>
+
         `).join("")}
+
       </div>
+
     `;
+
   }
 
+
+  /* CHARGEMENT DES PRODUITS */
+
   fetch("products.json")
+
     .then(response => {
+
       if (!response.ok) {
-        throw new Error("Impossible de charger products.json");
+
+        throw new Error(
+          "Impossible de charger products.json"
+        );
+
       }
 
       return response.json();
+
     })
+
     .then(data => {
-      products = Array.isArray(data) ? data : [];
+
+      products =
+        Array.isArray(data)
+          ? data
+          : [];
+
 
       buildBrandFilter();
+
       buildVehicleFilter();
+
       buildPopularProducts();
-      performSearch();
+
+
+      /* IMPORTANT :
+         ON NE MONTRE PAS LES PRODUITS
+         AU CHARGEMENT */
+
+      document.getElementById(
+        "results"
+      ).innerHTML = "";
+
     })
+
     .catch(error => {
+
       console.error(error);
 
-      document.getElementById("results").innerHTML =
-        `<tr><td colspan="7">
-          Erreur lors du chargement des produits.
-        </td></tr>`;
+      document.getElementById(
+        "results"
+      ).innerHTML = "";
+
     });
+
+
+  /* EVENEMENTS */
 
   document
     .getElementById("searchInput")
-    .addEventListener("input", performSearch);
+    .addEventListener(
+      "input",
+      performSearch
+    );
+
 
   document
     .getElementById("brandFilter")
-    .addEventListener("change", performSearch);
+    .addEventListener(
+      "change",
+      performSearch
+    );
+
 
   document
     .getElementById("vehicleFilter")
-    .addEventListener("change", performSearch);
+    .addEventListener(
+      "change",
+      performSearch
+    );
+
 </script>
 
 </body>
