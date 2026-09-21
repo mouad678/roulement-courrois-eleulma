@@ -4,16 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Roulements & Courroies El Eulma | SKF, TIMKEN, Joints SPI</title>
+  <title>Roulements & Courroies El Eulma | SKF, TIMKEN, Joint SPI</title>
 
-  <meta name="description" content="Roulements, courroies et joints SPI à El Eulma. Retrouvez les références, marques, véhicules, dimensions et disponibilité.">
-  <meta name="keywords" content="roulement El Eulma, courroie El Eulma, joint SPI, SKF, TIMKEN, roulements automobiles">
+  <meta name="description" content="Roulements automobiles, courroies et joints SPI à El Eulma. Recherchez vos références, marques, véhicules et dimensions. SKF, TIMKEN et autres marques disponibles selon nos données.">
+
+  <meta name="keywords" content="roulement El Eulma, roulements automobiles El Eulma, courroie El Eulma, courroies automobiles, joint SPI El Eulma, SKF El Eulma, TIMKEN El Eulma, pièces automobiles El Eulma">
+
   <meta name="robots" content="index, follow">
-  <meta name="author" content="Roulement Courrois Eleulma">
+  <meta name="author" content="ROULEMENT COURROIS ELEULMA">
+  <meta name="language" content="fr">
 
-  <meta property="og:title" content="Roulements & Courroies El Eulma">
-  <meta property="og:description" content="Roulements, courroies et joints SPI à El Eulma.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Roulements & Courroies El Eulma | SKF, TIMKEN">
+  <meta property="og:description" content="Roulements automobiles, courroies et joints SPI à El Eulma. Recherche par référence, marque ou véhicule.">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="ROULEMENT COURROIS ELEULMA">
 
   <style>
     * {
@@ -148,7 +154,6 @@
       font-weight: bold;
     }
 
-    /* PHOTOS GRANDES ET UNE SOUS L'AUTRE */
     .products-images {
       display: flex;
       flex-direction: column;
@@ -165,7 +170,6 @@
       background: #ddd;
     }
 
-    /* LOCALISATION */
     .location {
       background: white;
       margin-top: 20px;
@@ -204,7 +208,6 @@
       color: #777;
     }
 
-    /* ORDINATEUR */
     @media (min-width: 701px) {
       .products-images {
         max-width: 700px;
@@ -213,7 +216,6 @@
       }
     }
 
-    /* TELEPHONE */
     @media (max-width: 700px) {
       header h1 {
         font-size: 21px;
@@ -244,7 +246,6 @@
 
 <div class="container">
 
-  <!-- CONTACT -->
   <div class="actions">
 
     <a class="call" href="tel:+213540725525">
@@ -267,7 +268,6 @@
 
   </div>
 
-  <!-- RECHERCHE -->
   <div class="search-box">
 
     <input
@@ -290,7 +290,6 @@
 
   </div>
 
-  <!-- RESULTATS -->
   <div class="table-container">
 
     <table>
@@ -313,33 +312,36 @@
 
   </div>
 
-  <!-- PRODUITS POPULAIRES SI PRESENTS DANS LES DONNEES -->
   <div id="popularSection"></div>
 
-  <!-- PHOTOS -->
   <div class="products-images">
 
     <img src="IMG_0383.jpeg"
-         alt="Roulements et pièces automobiles">
+         alt="Roulements et pièces automobiles à El Eulma"
+         loading="lazy">
 
     <img src="IMG_0384.jpeg"
-         alt="Roulements automobiles">
+         alt="Roulements automobiles à El Eulma"
+         loading="lazy">
 
     <img src="IMG_0385.jpeg"
-         alt="Courroies automobiles">
+         alt="Courroies automobiles à El Eulma"
+         loading="lazy">
 
     <img src="IMG_0386.jpeg"
-         alt="Pièces automobiles">
+         alt="Pièces automobiles à El Eulma"
+         loading="lazy">
 
     <img src="IMG_0541.jpeg"
-         alt="Roulements El Eulma">
+         alt="Roulements El Eulma"
+         loading="lazy">
 
     <img src="IMG_0542.jpeg"
-         alt="Courroies El Eulma">
+         alt="Courroies El Eulma"
+         loading="lazy">
 
   </div>
 
-  <!-- LOCALISATION -->
   <div class="location">
 
     <h2>📍 Localisation</h2>
@@ -373,8 +375,6 @@
   const whatsappNumber = "213659734031";
 
 
-  /* NORMALISATION */
-
   function normalize(value) {
 
     return String(value ?? "")
@@ -385,8 +385,6 @@
 
   }
 
-
-  /* INFORMATIONS PRODUIT */
 
   function getReference(p) {
 
@@ -476,8 +474,6 @@
   }
 
 
-  /* STOCK */
-
   function displayStock(value) {
 
     const v = normalize(value);
@@ -508,8 +504,6 @@
   }
 
 
-  /* SECURITE HTML */
-
   function escapeHTML(value) {
 
     return String(value ?? "")
@@ -521,8 +515,6 @@
 
   }
 
-
-  /* MARQUES */
 
   function buildBrandFilter() {
 
@@ -566,8 +558,6 @@
 
   }
 
-
-  /* VEHICULES UNIQUEMENT PRESENTS DANS LES DONNEES */
 
   function buildVehicleFilter() {
 
@@ -617,8 +607,6 @@
   }
 
 
-  /* WHATSAPP */
-
   function requestPrice(reference) {
 
     const message =
@@ -631,8 +619,6 @@
 
   }
 
-
-  /* RECHERCHE */
 
   function performSearch() {
 
@@ -651,10 +637,6 @@
         document.getElementById("vehicleFilter").value
       );
 
-
-    /* IMPORTANT :
-       IL FAUT ECRIRE DANS LA RECHERCHE
-       POUR AFFICHER LES RESULTATS */
 
     if (!search) {
 
@@ -719,8 +701,6 @@
 
   }
 
-
-  /* AFFICHAGE */
 
   function displayResults(list) {
 
@@ -821,9 +801,6 @@
   }
 
 
-  /* PRODUITS LES PLUS DEMANDES
-     UNIQUEMENT SI L'INFORMATION EXISTE */
-
   function buildPopularProducts() {
 
     const popularFields = [
@@ -906,8 +883,6 @@
   }
 
 
-  /* CHARGEMENT DES PRODUITS */
-
   fetch("products.json")
 
     .then(response => {
@@ -939,8 +914,6 @@
       buildPopularProducts();
 
 
-      /* PAS DE PRODUITS AU CHARGEMENT */
-
       document.getElementById(
         "results"
       ).innerHTML = "";
@@ -957,8 +930,6 @@
 
     });
 
-
-  /* EVENEMENTS */
 
   document
     .getElementById("searchInput")
