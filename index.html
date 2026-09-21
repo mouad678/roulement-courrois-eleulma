@@ -652,13 +652,11 @@
       );
 
 
-    /* RIEN N'EST AFFICHÉ AU DEPART */
+    /* IMPORTANT :
+       IL FAUT ECRIRE DANS LA RECHERCHE
+       POUR AFFICHER LES RESULTATS */
 
-    if (
-      !search &&
-      !brandFilter &&
-      !vehicleFilter
-    ) {
+    if (!search) {
 
       document.getElementById("results").innerHTML = "";
 
@@ -684,8 +682,6 @@
 
 
         const matchesSearch =
-
-          !search ||
 
           reference.includes(search) ||
 
@@ -943,9 +939,7 @@
       buildPopularProducts();
 
 
-      /* IMPORTANT :
-         ON NE MONTRE PAS LES PRODUITS
-         AU CHARGEMENT */
+      /* PAS DE PRODUITS AU CHARGEMENT */
 
       document.getElementById(
         "results"
