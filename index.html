@@ -1097,6 +1097,28 @@
 
   }
 
+  /* =========================
+     PRIX PRODUIT PRIVÉ
+  ========================= */
+
+  function getProductPrice(p) {
+
+    const value =
+      p.price ??
+      p.Price ??
+      p.prix ??
+      p.Prix ??
+      0;
+
+    const number =
+      Number(value);
+
+    return Number.isFinite(number)
+      ? Math.max(0, number)
+      : 0;
+
+  }
+
   function displayStock(stock) {
 
     if (stock > 0) {
@@ -1424,12 +1446,6 @@
             productBrand.includes(search) ||
             productVehicle.includes(search) ||
             dimensions.includes(search);
-
-          /*
-            La marque sélectionnée ne fonctionne
-            comme filtre que lorsqu'une recherche
-            texte est également présente.
-          */
 
           const brandMatch =
             !brand ||
@@ -1794,7 +1810,7 @@
           1,
 
         price:
-          0
+          getProductPrice(product)
 
       });
 
