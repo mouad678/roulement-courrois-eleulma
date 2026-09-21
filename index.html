@@ -8,14 +8,12 @@
   <meta name="description" content="Site officiel — Roulements, Courroies & Joint SPI — El Eulma. Recherchez vos références, marques, véhicules et dimensions.">
   <meta name="keywords" content="roulement, courroie, joint SPI, SKF, TIMKEN, El Eulma">
 
-  <!-- LOGO / ICÔNE DU SITE -->
+  <!-- Logo / icône du site -->
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -31,16 +29,14 @@
       text-align: center;
     }
 
-    /* LOGO */
     .site-logo {
+      display: block;
       width: 120px;
       height: 120px;
       object-fit: cover;
       border-radius: 50%;
-      background: white;
-      padding: 4px;
-      margin: 0 auto 10px;
-      display: block;
+      margin: 0 auto 12px;
+      border: 3px solid #fff;
       box-shadow: 0 3px 12px rgba(0,0,0,.35);
     }
 
@@ -198,9 +194,7 @@
       margin-top: 25px;
     }
 
-    /* =========================
-       BON ADMIN
-    ========================= */
+    /* ========================= BON ADMIN ========================= */
 
     #bonPanel {
       display: none;
@@ -338,9 +332,7 @@
       font-size: 13px;
     }
 
-    /* =========================
-       RECHERCHE BON
-    ========================= */
+    /* ========================= RECHERCHE BON ========================= */
 
     .bon-search-box {
       background: #f7f7f7;
@@ -389,13 +381,13 @@
 
     @media (max-width: 700px) {
 
+      header h1 {
+        font-size: 22px;
+      }
+
       .site-logo {
         width: 100px;
         height: 100px;
-      }
-
-      header h1 {
-        font-size: 22px;
       }
 
       .filters {
@@ -439,7 +431,6 @@
         size: A4;
         margin: 10mm;
       }
-
     }
   </style>
 </head>
@@ -448,7 +439,6 @@
 
 <header>
 
-  <!-- LOGO -->
   <img
     class="site-logo"
     src="logo.png"
@@ -466,7 +456,9 @@
 
   <div class="buttons">
 
-    <a class="call" href="tel:0540725525">
+    <a
+      class="call"
+      href="tel:0540725525">
       ☎ Appeler
     </a>
 
@@ -490,10 +482,6 @@
 
 <div class="container">
 
-  <!-- =========================
-       RECHERCHE PUBLIQUE
-  ========================= -->
-
   <div class="search-box">
 
     <h2>Rechercher un produit</h2>
@@ -501,7 +489,6 @@
     <div class="filters">
 
       <div>
-
         <label>Recherche</label>
 
         <input
@@ -509,7 +496,6 @@
           id="searchInput"
           placeholder="Référence, désignation, marque, véhicule, dimensions..."
           oninput="renderProducts()">
-
       </div>
 
       <div>
@@ -548,10 +534,6 @@
 
   </div>
 
-  <!-- =========================
-       PRODUITS
-  ========================= -->
-
   <div class="table-wrap">
 
     <table>
@@ -584,30 +566,39 @@
 
   </div>
 
-  <!-- =========================
-       GALERIE
-  ========================= -->
-
   <div class="section">
 
     <h2>Nos produits</h2>
 
     <div class="gallery">
 
-      <img src="IMG_0383.jpeg" alt="Roulements">
-      <img src="IMG_0384.jpeg" alt="Roulements">
-      <img src="IMG_0385.jpeg" alt="Roulements">
-      <img src="IMG_0386.jpeg" alt="Roulements">
-      <img src="IMG_0541.jpeg" alt="Courroies">
-      <img src="IMG_0542.jpeg" alt="Courroies">
+      <img
+        src="IMG_0383.jpeg"
+        alt="Roulements">
+
+      <img
+        src="IMG_0384.jpeg"
+        alt="Roulements">
+
+      <img
+        src="IMG_0385.jpeg"
+        alt="Roulements">
+
+      <img
+        src="IMG_0386.jpeg"
+        alt="Roulements">
+
+      <img
+        src="IMG_0541.jpeg"
+        alt="Courroies">
+
+      <img
+        src="IMG_0542.jpeg"
+        alt="Courroies">
 
     </div>
 
   </div>
-
-  <!-- =========================
-       LOCALISATION
-  ========================= -->
 
   <div class="section">
 
@@ -628,98 +619,107 @@
 
   </div>
 
-  <!-- =========================
-       ESPACE BON PRIVÉ
-  ========================= -->
+  <!-- ========================= ESPACE BON PRIVÉ ========================= -->
 
   <div id="bonPanel">
 
-    <h2>🔒 Espace BON — Privé</h2>
-
-    <p>
-      Cette partie est réservée à l'administrateur.
-      La création d'un BON ne diminue pas le stock.
-    </p>
+    <h2>ESPACE BON — ADMIN</h2>
 
     <div class="bon-grid">
 
       <div>
 
-        <label>N° BON</label>
+        <label>
+          Numéro BON
+        </label>
 
         <input
+          type="text"
           id="bonNumber"
-          type="text">
+          placeholder="BON-000001"
+          oninput="generateBon()">
 
       </div>
 
       <div>
 
-        <label>Date</label>
+        <label>
+          Date
+        </label>
 
         <input
+          type="date"
           id="bonDate"
-          type="date">
+          onchange="generateBon()">
 
       </div>
 
       <div>
 
-        <label>Nom du client</label>
+        <label>
+          Nom client
+        </label>
 
         <input
+          type="text"
           id="clientName"
-          type="text"
-          placeholder="Nom du client">
+          placeholder="Nom du client"
+          oninput="generateBon()">
 
       </div>
 
       <div>
 
-        <label>Téléphone</label>
+        <label>
+          Téléphone client
+        </label>
 
         <input
+          type="text"
           id="clientPhone"
-          type="text"
-          placeholder="Téléphone">
+          placeholder="Téléphone"
+          oninput="generateBon()">
 
       </div>
 
       <div>
 
-        <label>Adresse / Informations</label>
+        <label>
+          Adresse client
+        </label>
 
         <input
-          id="clientAddress"
           type="text"
-          placeholder="Adresse ou information">
+          id="clientAddress"
+          placeholder="Adresse"
+          oninput="generateBon()">
 
       </div>
 
       <div>
 
-        <label>Mode de paiement</label>
+        <label>
+          Mode de paiement
+        </label>
 
-        <select id="paymentMode">
+        <select
+          id="paymentMode"
+          onchange="generateBon()">
 
-          <option value="">
-            Choisir
-          </option>
-
-          <option>
+          <option value="Espèces">
             Espèces
           </option>
 
-          <option>
+          <option value="Virement">
             Virement
           </option>
 
-          <option>
+          <option value="Chèque">
             Chèque
           </option>
 
-          <option>
-            Autre
+          <option value="Crédit">
+            Crédit
           </option>
 
         </select>
@@ -728,20 +728,18 @@
 
     </div>
 
-    <!-- RECHERCHE PRODUIT BON -->
-
-    <h3>Ajouter un produit au BON</h3>
+    <!-- RECHERCHE PRODUIT -->
 
     <div class="bon-search-box">
 
       <label>
-        Rechercher le produit
+        Rechercher un produit pour le BON
       </label>
 
       <input
-        id="bonSearchInput"
         type="text"
-        placeholder="Référence, désignation, marque, véhicule, dimensions..."
+        id="bonSearchInput"
+        placeholder="Référence, désignation, marque, véhicule..."
         oninput="renderBonSearch()">
 
       <div
@@ -758,8 +756,6 @@
 
     <!-- PRODUITS DU BON -->
 
-    <h3>Produits du BON</h3>
-
     <div class="bon-products">
 
       <table>
@@ -767,9 +763,9 @@
         <thead>
 
           <tr>
-            <th>Produit</th>
+            <th>Désignation</th>
             <th>Référence</th>
-            <th>Qté</th>
+            <th>Quantité</th>
             <th>Prix</th>
             <th>Total</th>
             <th></th>
@@ -777,24 +773,66 @@
 
         </thead>
 
-        <tbody id="bonProducts"></tbody>
+        <tbody id="bonProducts">
+
+          <tr>
+            <td colspan="6">
+              Aucun produit ajouté au BON.
+            </td>
+          </tr>
+
+        </tbody>
 
       </table>
+
+    </div>
+
+    <div class="bon-grid">
+
+      <div>
+
+        <label>
+          Remise
+        </label>
+
+        <input
+          type="number"
+          id="discount"
+          min="0"
+          step="0.01"
+          value="0"
+          oninput="generateBon()">
+
+      </div>
+
+      <div>
+
+        <label>
+          Note
+        </label>
+
+        <textarea
+          id="bonNote"
+          rows="3"
+          placeholder="Merci pour votre confiance..."
+          oninput="generateBon()"></textarea>
+
+      </div>
 
     </div>
 
     <div class="bon-actions">
 
       <button
-        class="btn-red"
+        class="btn-green"
         onclick="generateBon()">
-        Générer / Actualiser BON
+        Générer le BON
       </button>
 
       <button
         class="btn-black"
         onclick="printBon()">
-        🖨 Imprimer
+        Imprimer
       </button>
 
       <button
@@ -805,35 +843,7 @@
 
     </div>
 
-    <!-- REMISE -->
-
-    <div style="margin-top:15px;max-width:300px;">
-
-      <label>Remise</label>
-
-      <input
-        id="discount"
-        type="number"
-        min="0"
-        value="0"
-        oninput="generateBon()">
-
-    </div>
-
-    <!-- NOTE -->
-
-    <div>
-
-      <label>Note</label>
-
-      <textarea
-        id="bonNote"
-        rows="3"
-        placeholder="Note éventuelle..."></textarea>
-
-    </div>
-
-    <!-- APERÇU BON -->
+    <!-- APERCU BON -->
 
     <div id="bonPreview">
 
@@ -843,14 +853,17 @@
           ROULEMENT COURROIS ELEULMA
         </h2>
 
-        <strong>
-          MOUAD & NEDJMO
-        </strong>
+        <p>
+          Roulements, Courroies & Joint SPI
+        </p>
 
         <p>
-          El Eulma — Rue Dubai<br>
-          Près de la Mosquée Ennour<br>
-          Tél : 0540 72 55 25<br>
+          El Eulma — Rue Dubai — Près de la Mosquée Ennour
+        </p>
+
+        <p>
+          Tél : 0540 72 55 25
+          |
           WhatsApp : 0659 73 40 31
         </p>
 
@@ -860,32 +873,32 @@
 
         <div>
           <strong>N° BON :</strong>
-          <span id="previewBonNumber"></span>
+          <span id="previewBonNumber">—</span>
         </div>
 
         <div>
           <strong>Date :</strong>
-          <span id="previewBonDate"></span>
+          <span id="previewBonDate">—</span>
         </div>
 
         <div>
           <strong>Client :</strong>
-          <span id="previewClientName"></span>
+          <span id="previewClientName">—</span>
         </div>
 
         <div>
           <strong>Téléphone :</strong>
-          <span id="previewClientPhone"></span>
+          <span id="previewClientPhone">—</span>
         </div>
 
         <div>
           <strong>Adresse :</strong>
-          <span id="previewClientAddress"></span>
+          <span id="previewClientAddress">—</span>
         </div>
 
         <div>
           <strong>Paiement :</strong>
-          <span id="previewPayment"></span>
+          <span id="previewPayment">—</span>
         </div>
 
       </div>
@@ -895,7 +908,7 @@
         <thead>
 
           <tr>
-            <th>Produit</th>
+            <th>Désignation</th>
             <th>Référence</th>
             <th>Qté</th>
             <th>Prix</th>
@@ -912,9 +925,9 @@
 
         <div class="total-line">
 
-          <span>
+          <strong>
             Sous-total
-          </span>
+          </strong>
 
           <span id="previewSubtotal">
             0.00 DA
@@ -924,9 +937,9 @@
 
         <div class="total-line">
 
-          <span>
+          <strong>
             Remise
-          </span>
+          </strong>
 
           <span id="previewDiscount">
             0.00 DA
@@ -936,9 +949,9 @@
 
         <div class="total-line grand-total">
 
-          <span>
+          <strong>
             TOTAL
-          </span>
+          </strong>
 
           <span id="previewTotal">
             0.00 DA
@@ -948,23 +961,16 @@
 
       </div>
 
-      <div style="margin-top:20px;">
-
-        <strong>
-          Note :
-        </strong>
-
-        <span id="previewNote"></span>
-
-      </div>
-
       <div class="bon-footer">
 
-        Merci pour votre confiance.
+        <p>
+          Note :
+          <span id="previewNote">—</span>
+        </p>
 
-        <br>
-
-        ROULEMENT COURROIS ELEULMA — MOUAD & NEDJMO
+        <p>
+          Merci pour votre confiance.
+        </p>
 
       </div>
 
@@ -980,57 +986,26 @@
     ROULEMENT COURROIS ELEULMA
   </strong>
 
-  <p>
-    Roulements, Courroies & Joint SPI — El Eulma
-  </p>
+  <br>
 
-  <p>
-    0540 72 55 25 — WhatsApp : 0659 73 40 31
-  </p>
+  Roulements, Courroies & Joint SPI — El Eulma
 
 </footer>
 
 <script>
 
+  /* =========================
+     VARIABLES
+  ========================= */
+
   let products = [];
   let bonItems = [];
 
-  /* =========================
-     CODE ADMIN
-  ========================= */
-
   const ADMIN_CODE = "MOUAD26";
-
-  /* =========================
-     ACCÈS BON SECRET
-     5 PRESSIONS
-  ========================= */
 
   let adminTapCount = 0;
   let adminTapTimer = null;
 
-  function secretBonAccess() {
-
-    adminTapCount++;
-
-    clearTimeout(adminTapTimer);
-
-    if (adminTapCount >= 5) {
-
-      adminTapCount = 0;
-
-      openAdmin();
-
-      return;
-    }
-
-    adminTapTimer = setTimeout(() => {
-
-      adminTapCount = 0;
-
-    }, 2500);
-
-  }
 
   /* =========================
      OUTILS
@@ -1046,55 +1021,93 @@
 
   }
 
-  function getReference(p) {
 
-    return p.reference ??
-           p.Reference ??
-           p.ref ??
-           p.Ref ??
-           "";
+  function escapeHTML(value) {
+
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
 
   }
+
+
+  /* =========================
+     LECTURE DES CHAMPS
+  ========================= */
+
+  function getReference(p) {
+
+    return (
+      p.reference ??
+      p.Reference ??
+      p.ref ??
+      p.Ref ??
+      p.code ??
+      p.Code ??
+      ""
+    );
+
+  }
+
 
   function getDesignation(p) {
 
-    return p.designation ??
-           p.Designation ??
-           p.nom ??
-           p.name ??
-           "";
+    return (
+      p.designation ??
+      p.Designation ??
+      p.description ??
+      p.Description ??
+      p.name ??
+      p.Name ??
+      ""
+    );
 
   }
+
 
   function getBrand(p) {
 
-    return p.brand ??
-           p.Brand ??
-           p.marque ??
-           p.Marque ??
-           "";
+    return (
+      p.brand ??
+      p.Brand ??
+      p.marque ??
+      p.Marque ??
+      ""
+    );
 
   }
+
 
   function getVehicle(p) {
 
-    return p.vehicle ??
-           p.Vehicle ??
-           p.vehicule ??
-           p.Vehicule ??
-           "";
+    return (
+      p.vehicle ??
+      p.Vehicle ??
+      p.vehicule ??
+      p.Vehicule ??
+      p.vehicles ??
+      p.Vehicles ??
+      ""
+    );
 
   }
+
 
   function getDimensions(p) {
 
-    return p.dimensions ??
-           p.Dimensions ??
-           p.dimension ??
-           p.Dimension ??
-           "";
+    return (
+      p.dimensions ??
+      p.Dimensions ??
+      p.dimension ??
+      p.Dimension ??
+      ""
+    );
 
   }
+
 
   function getStock(p) {
 
@@ -1105,16 +1118,14 @@
       p.Quantity ??
       0;
 
-    const number = Number(value);
-
-    return Number.isFinite(number)
-      ? number
-      : 0;
+    return Number(value) || 0;
 
   }
 
+
   /* =========================
-     PRIX PRODUIT PRIVÉ
+     PRIX PRODUIT
+     SOURCE = products.json
   ========================= */
 
   function getProductPrice(p) {
@@ -1126,22 +1137,22 @@
       p.Prix ??
       0;
 
-    const number =
-      Number(value);
-
-    return Number.isFinite(number)
-      ? Math.max(0, number)
-      : 0;
+    return Math.max(0, Number(value) || 0);
 
   }
 
+
+  /* =========================
+     AFFICHAGE STOCK
+  ========================= */
+
   function displayStock(stock) {
 
-    if (stock > 0) {
+    if (Number(stock) > 0) {
 
       return `
         <span class="stock-ok">
-          ${stock}
+          ${Number(stock)}
         </span>
       `;
 
@@ -1155,52 +1166,6 @@
 
   }
 
-  function escapeHTML(value) {
-
-    return String(value ?? "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
-
-  }
-
-  /* =========================
-     WHATSAPP
-  ========================= */
-
-  function requestPrice(index) {
-
-    const product =
-      products[index];
-
-    if (!product) {
-      return;
-    }
-
-    const reference =
-      getReference(product);
-
-    const designation =
-      getDesignation(product);
-
-    const brand =
-      getBrand(product);
-
-    const text =
-      "Bonjour, je souhaite connaître le prix de ce produit :\n\n" +
-      "Référence : " + reference + "\n" +
-      "Désignation : " + designation + "\n" +
-      "Marque : " + brand;
-
-    window.open(
-      "https://wa.me/213659734031?text=" +
-      encodeURIComponent(text),
-      "_blank"
-    );
-
-  }
 
   /* =========================
      CHARGEMENT PRODUITS
@@ -1211,216 +1176,162 @@
     try {
 
       const response =
-        await fetch("products.json", {
-          cache: "no-store"
-        });
+        await fetch("products.json?v=" + Date.now());
 
       if (!response.ok) {
-
-        throw new Error(
-          "products.json introuvable"
-        );
-
+        throw new Error("Erreur products.json");
       }
 
-      const data =
-        await response.json();
+      products = await response.json();
 
-      products =
-        Array.isArray(data)
-          ? data
-          : (data.products || []);
+      if (!Array.isArray(products)) {
+        products = [];
+      }
 
-      buildBrandFilter();
-      buildVehicleFilter();
-
+      buildFilters();
       renderProducts();
+      renderBonSearch();
 
     } catch (error) {
 
       console.error(error);
 
-      document.getElementById(
-        "productTable"
-      ).innerHTML =
-
-        `<tr>
+      document.getElementById("productTable").innerHTML = `
+        <tr>
           <td colspan="7">
             Impossible de charger les produits.
           </td>
-        </tr>`;
+        </tr>
+      `;
 
     }
 
   }
 
+
   /* =========================
-     FILTRE MARQUES DYNAMIQUE
+     FILTRES DYNAMIQUES
   ========================= */
 
-  function buildBrandFilter() {
+  function buildFilters() {
 
-    const select =
-      document.getElementById(
-        "brandFilter"
-      );
+    const brandSelect =
+      document.getElementById("brandFilter");
 
-    select.innerHTML =
-      `<option value="">
-        Toutes les marques
-      </option>`;
+    const vehicleSelect =
+      document.getElementById("vehicleFilter");
 
-    const brands =
-      new Set();
+
+    const brands = new Set();
+    const vehicles = new Set();
+
 
     products.forEach(product => {
 
       const brand =
-        String(getBrand(product))
-          .trim();
+        String(getBrand(product)).trim();
+
+      const vehicle =
+        String(getVehicle(product)).trim();
+
 
       if (brand) {
         brands.add(brand);
       }
 
-    });
 
-    [...brands]
-      .sort((a, b) =>
-        normalize(a).localeCompare(
-          normalize(b)
-        )
-      )
-      .forEach(brand => {
+      if (vehicle) {
 
-        const option =
-          document.createElement(
-            "option"
-          );
+        vehicle
+          .split(/[;,|]/)
+          .map(v => v.trim())
+          .filter(Boolean)
+          .forEach(v => vehicles.add(v));
 
-        option.value = brand;
-        option.textContent = brand;
-
-        select.appendChild(option);
-
-      });
-
-  }
-
-  /* =========================
-     FILTRE VEHICULE DYNAMIQUE
-  ========================= */
-
-  function buildVehicleFilter() {
-
-    const select =
-      document.getElementById(
-        "vehicleFilter"
-      );
-
-    select.innerHTML =
-      `<option value="">
-        Tous les véhicules
-      </option>`;
-
-    const vehicles =
-      new Set();
-
-    products.forEach(product => {
-
-      const vehicle =
-        getVehicle(product);
-
-      String(vehicle)
-        .split(/[,\n;/]+/)
-        .map(v => v.trim())
-        .filter(Boolean)
-        .forEach(v =>
-          vehicles.add(v)
-        );
+      }
 
     });
 
-    [...vehicles]
-      .sort((a, b) =>
-        normalize(a).localeCompare(
-          normalize(b)
+
+    brandSelect.innerHTML =
+      `<option value="">Toutes les marques</option>` +
+      [...brands]
+        .sort((a, b) =>
+          a.localeCompare(b, "fr")
         )
-      )
-      .forEach(vehicle => {
+        .map(brand => `
+          <option value="${escapeHTML(brand)}">
+            ${escapeHTML(brand)}
+          </option>
+        `)
+        .join("");
 
-        const option =
-          document.createElement(
-            "option"
-          );
 
-        option.value = vehicle;
-        option.textContent = vehicle;
-
-        select.appendChild(option);
-
-      });
+    vehicleSelect.innerHTML =
+      `<option value="">Tous les véhicules</option>` +
+      [...vehicles]
+        .sort((a, b) =>
+          a.localeCompare(b, "fr")
+        )
+        .map(vehicle => `
+          <option value="${escapeHTML(vehicle)}">
+            ${escapeHTML(vehicle)}
+          </option>
+        `)
+        .join("");
 
   }
 
+
   /* =========================
-     AFFICHAGE PRODUITS PUBLIC
+     AFFICHER PRODUITS
   ========================= */
 
   function renderProducts() {
 
+    const tbody =
+      document.getElementById("productTable");
+
     const search =
       normalize(
-        document.getElementById(
-          "searchInput"
-        ).value
+        document.getElementById("searchInput").value
       );
 
     const brand =
       normalize(
-        document.getElementById(
-          "brandFilter"
-        ).value
+        document.getElementById("brandFilter").value
       );
 
     const vehicle =
       normalize(
-        document.getElementById(
-          "vehicleFilter"
-        ).value
+        document.getElementById("vehicleFilter").value
       );
 
-    const tbody =
-      document.getElementById(
-        "productTable"
-      );
 
     /*
-      RÈGLE DE RECHERCHE :
+      IMPORTANT :
+      La liste publique reste vide
+      tant qu'il n'y a pas de recherche
+      ou de sélection véhicule.
 
-      - Recherche seule = OK
-      - Véhicule seul = OK
-      - Marque seule = PAS DE RÉSULTAT
-      - Recherche + Marque = OK
-      - Recherche + Véhicule = OK
-      - Marque + Véhicule sans recherche = PAS DE RÉSULTAT
+      La marque seule ne déclenche
+      pas l'affichage.
     */
 
     if (!search && !vehicle) {
 
-      tbody.innerHTML =
-
-        `<tr>
+      tbody.innerHTML = `
+        <tr>
           <td colspan="7">
-            Écrivez une référence, une désignation,
-            une marque, un véhicule ou des dimensions,
-            ou choisissez un véhicule pour rechercher.
+            Recherchez un produit ou sélectionnez un véhicule.
           </td>
-        </tr>`;
+        </tr>
+      `;
 
       return;
 
     }
+
 
     const filtered =
       products
@@ -1431,147 +1342,204 @@
         .filter(({ product }) => {
 
           const ref =
-            normalize(
-              getReference(product)
-            );
+            normalize(getReference(product));
 
           const designation =
-            normalize(
-              getDesignation(product)
-            );
+            normalize(getDesignation(product));
 
-          const productBrand =
-            normalize(
-              getBrand(product)
-            );
+          const brandText =
+            normalize(getBrand(product));
 
-          const productVehicle =
-            normalize(
-              getVehicle(product)
-            );
+          const vehicleText =
+            normalize(getVehicle(product));
 
           const dimensions =
-            normalize(
-              getDimensions(product)
-            );
+            normalize(getDimensions(product));
 
-          const textMatch =
+
+          const searchMatch =
             !search ||
             ref.includes(search) ||
             designation.includes(search) ||
-            productBrand.includes(search) ||
-            productVehicle.includes(search) ||
+            brandText.includes(search) ||
+            vehicleText.includes(search) ||
             dimensions.includes(search);
+
 
           const brandMatch =
             !brand ||
-            (search &&
-             productBrand.includes(brand));
+            brandText === brand;
+
 
           const vehicleMatch =
             !vehicle ||
-            productVehicle.includes(vehicle);
+            vehicleText.includes(vehicle);
+
 
           return (
-            textMatch &&
+            searchMatch &&
             brandMatch &&
             vehicleMatch
           );
 
         });
 
+
     if (!filtered.length) {
 
-      tbody.innerHTML =
-
-        `<tr>
+      tbody.innerHTML = `
+        <tr>
           <td colspan="7">
             Aucun produit trouvé.
           </td>
-        </tr>`;
+        </tr>
+      `;
 
       return;
 
     }
 
+
     tbody.innerHTML =
-      filtered.map(({ product, index }) => {
+      filtered
+        .map(({ product, index }) => {
 
-        const reference =
-          escapeHTML(
-            getReference(product)
-          );
+          const reference =
+            escapeHTML(getReference(product));
 
-        const designation =
-          escapeHTML(
-            getDesignation(product)
-          );
+          const designation =
+            escapeHTML(getDesignation(product));
 
-        const brandText =
-          escapeHTML(
-            getBrand(product)
-          );
+          const brandText =
+            escapeHTML(getBrand(product));
 
-        const vehicleText =
-          escapeHTML(
-            getVehicle(product)
-          );
+          const vehicleText =
+            escapeHTML(getVehicle(product));
 
-        const dimensions =
-          escapeHTML(
-            getDimensions(product)
-          );
+          const dimensions =
+            escapeHTML(getDimensions(product));
 
-        const stock =
-          getStock(product);
+          const stock =
+            getStock(product);
 
-        return `
 
-          <tr>
+          return `
+            <tr>
 
-            <td>
-              ${reference}
-            </td>
+              <td>
+                ${reference}
+              </td>
 
-            <td>
-              ${designation}
-            </td>
+              <td>
+                ${designation}
+              </td>
 
-            <td>
-              ${brandText}
-            </td>
+              <td>
+                ${brandText}
+              </td>
 
-            <td>
-              ${vehicleText || "—"}
-            </td>
+              <td>
+                ${vehicleText || "—"}
+              </td>
 
-            <td>
-              ${dimensions || "—"}
-            </td>
+              <td>
+                ${dimensions || "—"}
+              </td>
 
-            <td>
-              ${displayStock(stock)}
-            </td>
+              <td>
+                ${displayStock(stock)}
+              </td>
 
-            <td>
+              <td>
 
-              <button
-                class="request-btn"
-                onclick="requestPrice(${index})">
+                <button
+                  class="request-btn"
+                  onclick="requestPrice(${index})">
 
-                Demander le prix
+                  Demander le prix
 
-              </button>
+                </button>
 
-            </td>
+              </td>
 
-          </tr>
+            </tr>
+          `;
 
-        `;
-
-      }).join("");
+        })
+        .join("");
 
   }
+
+
+  /* =========================
+     DEMANDER PRIX WHATSAPP
+  ========================= */
+
+  function requestPrice(index) {
+
+    const product =
+      products[Number(index)];
+
+    if (!product) return;
+
+
+    const reference =
+      getReference(product);
+
+    const designation =
+      getDesignation(product);
+
+
+    const message =
+      "Bonjour, je voudrais connaître le prix de : " +
+      reference +
+      " - " +
+      designation;
+
+
+    const url =
+      "https://wa.me/213659734031?text=" +
+      encodeURIComponent(message);
+
+
+    window.open(url, "_blank");
+
+  }
+
+
+  /* =========================
+     ACCES ADMIN
+     5 CLICS SUR LE TITRE
+  ========================= */
+
+  function secretBonAccess() {
+
+    adminTapCount++;
+
+
+    clearTimeout(adminTapTimer);
+
+
+    adminTapTimer =
+      setTimeout(() => {
+
+        adminTapCount = 0;
+
+      }, 1500);
+
+
+    if (adminTapCount >= 5) {
+
+      adminTapCount = 0;
+
+      clearTimeout(adminTapTimer);
+
+      openAdmin();
+
+    }
+
+  }
+
 
   /* =========================
      OUVRIR ADMIN
@@ -1580,44 +1548,34 @@
   function openAdmin() {
 
     const code =
-      prompt(
-        "Entrez le code administrateur :"
-      );
+      prompt("Entrez le code administrateur :");
 
-    if (code === null) {
-      return;
-    }
+
+    if (code === null) return;
+
 
     if (code !== ADMIN_CODE) {
 
-      alert(
-        "Code incorrect."
-      );
+      alert("Code incorrect.");
 
       return;
 
     }
 
-    document.getElementById(
-      "bonPanel"
-    ).style.display = "block";
 
-    document.getElementById(
-      "bonDate"
-    ).value =
-      new Date()
-        .toISOString()
-        .split("T")[0];
+    document.getElementById("bonPanel").style.display =
+      "block";
+
+
+    document.getElementById("bonDate").value =
+      new Date().toISOString().split("T")[0];
+
 
     if (
-      !document.getElementById(
-        "bonNumber"
-      ).value
+      !document.getElementById("bonNumber").value
     ) {
 
-      document.getElementById(
-        "bonNumber"
-      ).value =
+      document.getElementById("bonNumber").value =
         "BON-" +
         new Date()
           .getTime()
@@ -1626,25 +1584,26 @@
 
     }
 
+
     renderBonItems();
     renderBonSearch();
     generateBon();
 
-    document.getElementById(
-      "bonPanel"
-    ).scrollIntoView({
+
+    document.getElementById("bonPanel").scrollIntoView({
       behavior: "smooth"
     });
 
   }
 
+
   function closeAdmin() {
 
-    document.getElementById(
-      "bonPanel"
-    ).style.display = "none";
+    document.getElementById("bonPanel").style.display =
+      "none";
 
   }
+
 
   /* =========================
      RECHERCHE PRODUIT DANS BON
@@ -1653,28 +1612,27 @@
   function renderBonSearch() {
 
     const input =
-      document.getElementById(
-        "bonSearchInput"
-      );
+      document.getElementById("bonSearchInput");
 
     const results =
-      document.getElementById(
-        "bonSearchResults"
-      );
+      document.getElementById("bonSearchResults");
 
     const search =
       normalize(input.value);
 
+
     if (!search) {
 
-      results.innerHTML =
-        `<div class="empty-message">
+      results.innerHTML = `
+        <div class="empty-message">
           Écrivez une recherche pour trouver un produit.
-        </div>`;
+        </div>
+      `;
 
       return;
 
     }
+
 
     const matches =
       products
@@ -1685,29 +1643,20 @@
         .filter(({ product }) => {
 
           const ref =
-            normalize(
-              getReference(product)
-            );
+            normalize(getReference(product));
 
           const designation =
-            normalize(
-              getDesignation(product)
-            );
+            normalize(getDesignation(product));
 
           const brand =
-            normalize(
-              getBrand(product)
-            );
+            normalize(getBrand(product));
 
           const vehicle =
-            normalize(
-              getVehicle(product)
-            );
+            normalize(getVehicle(product));
 
           const dimensions =
-            normalize(
-              getDimensions(product)
-            );
+            normalize(getDimensions(product));
+
 
           return (
             ref.includes(search) ||
@@ -1720,69 +1669,68 @@
         })
         .slice(0, 30);
 
+
     if (!matches.length) {
 
-      results.innerHTML =
-        `<div class="empty-message">
+      results.innerHTML = `
+        <div class="empty-message">
           Aucun produit trouvé.
-        </div>`;
+        </div>
+      `;
 
       return;
 
     }
 
+
     results.innerHTML =
-      matches.map(({ product, index }) => {
+      matches
+        .map(({ product, index }) => {
 
-        const ref =
-          escapeHTML(
-            getReference(product)
-          );
+          const ref =
+            escapeHTML(getReference(product));
 
-        const designation =
-          escapeHTML(
-            getDesignation(product)
-          );
+          const designation =
+            escapeHTML(getDesignation(product));
 
-        const brand =
-          escapeHTML(
-            getBrand(product)
-          );
+          const brand =
+            escapeHTML(getBrand(product));
 
-        const vehicle =
-          escapeHTML(
-            getVehicle(product)
-          );
+          const vehicle =
+            escapeHTML(getVehicle(product));
 
-        const stock =
-          getStock(product);
+          const stock =
+            getStock(product);
 
-        return `
 
-          <button
-            type="button"
-            class="bon-result"
-            onclick="addBonProduct(${index})">
+          return `
+            <button
+              type="button"
+              class="bon-result"
+              onclick="addBonProduct(${index})">
 
-            <strong>
-              ${ref}
-            </strong>
+              <strong>
+                ${ref}
+              </strong>
 
-            — ${designation}
+              — ${designation}
 
-            <small>
-              Marque : ${brand || "—"}
-              ${vehicle ? " | Véhicule : " + vehicle : ""}
-              | Stock : ${stock}
-            </small>
+              <small>
+                Marque : ${brand || "—"}
+                ${vehicle
+                  ? " | Véhicule : " + vehicle
+                  : ""}
+                | Stock : ${stock}
+              </small>
 
-          </button>
+            </button>
+          `;
 
-        `;
-
-      }).join("");
+        })
+        .join("");
 
   }
+
 
   /* =========================
      AJOUT PRODUIT AU BON
@@ -1793,19 +1741,20 @@
     productIndex =
       Number(productIndex);
 
+
     const product =
       products[productIndex];
 
-    if (!product) {
-      return;
-    }
+
+    if (!product) return;
+
 
     const existing =
       bonItems.find(
         item =>
-          Number(item.productIndex) ===
-          productIndex
+          Number(item.productIndex) === productIndex
       );
+
 
     if (existing) {
 
@@ -1819,11 +1768,9 @@
 
       bonItems.push({
 
-        productIndex:
-          productIndex,
+        productIndex: productIndex,
 
-        quantity:
-          1,
+        quantity: 1,
 
         price:
           getProductPrice(product)
@@ -1832,10 +1779,12 @@
 
     }
 
+
     renderBonItems();
     generateBon();
 
   }
+
 
   /* =========================
      AFFICHER PRODUITS BON
@@ -1844,126 +1793,142 @@
   function renderBonItems() {
 
     const tbody =
-      document.getElementById(
-        "bonProducts"
-      );
+      document.getElementById("bonProducts");
+
 
     if (!bonItems.length) {
 
-      tbody.innerHTML =
-        `<tr>
+      tbody.innerHTML = `
+        <tr>
           <td colspan="6">
             Aucun produit ajouté au BON.
           </td>
-        </tr>`;
+        </tr>
+      `;
 
       return;
 
     }
 
+
     tbody.innerHTML =
-      bonItems.map((item, index) => {
+      bonItems
+        .map((item, index) => {
 
-        const selectedIndex =
-          Number(item.productIndex);
+          const selectedIndex =
+            Number(item.productIndex);
 
-        const product =
-          products[selectedIndex];
+          const product =
+            products[selectedIndex];
 
-        if (!product) {
-          return "";
-        }
 
-        const reference =
-          escapeHTML(
-            getReference(product)
-          );
+          if (!product) return "";
 
-        const designation =
-          escapeHTML(
-            getDesignation(product)
-          );
 
-        const quantity =
-          Math.max(
-            1,
-            Number(item.quantity) || 1
-          );
+          const reference =
+            escapeHTML(
+              getReference(product)
+            );
 
-        const price =
-          Math.max(
-            0,
-            Number(item.price) || 0
-          );
+          const designation =
+            escapeHTML(
+              getDesignation(product)
+            );
 
-        const total =
-          quantity * price;
 
-        return `
+          const quantity =
+            Math.max(
+              1,
+              Number(item.quantity) || 1
+            );
 
-          <tr>
 
-            <td>
-              ${designation}
-            </td>
+          /*
+            IMPORTANT :
+            Le prix est toujours relu
+            depuis products.json.
 
-            <td>
-              ${reference}
-            </td>
+            Impossible de le modifier
+            manuellement dans le BON.
+          */
 
-            <td>
+          const price =
+            getProductPrice(product);
 
-              <input
-                type="number"
-                min="1"
-                value="${quantity}"
-                onchange="changeBonQuantity(${index}, this.value)">
 
-            </td>
+          item.price = price;
 
-            <td>
 
-              <input
-                type="number"
-                min="0"
-                step="0.01"
-                value="${price}"
-                onchange="changeBonPrice(${index}, this.value)">
+          const total =
+            quantity * price;
 
-            </td>
 
-            <td>
-              ${total.toFixed(2)} DA
-            </td>
+          return `
+            <tr>
 
-            <td>
+              <td>
+                ${designation}
+              </td>
 
-              <button
-                class="btn-red"
-                onclick="removeBonProduct(${index})">
+              <td>
+                ${reference}
+              </td>
 
-                X
+              <td>
 
-              </button>
+                <input
+                  type="number"
+                  min="1"
+                  value="${quantity}"
+                  onchange="changeBonQuantity(${index}, this.value)">
 
-            </td>
+              </td>
 
-          </tr>
+              <td>
 
-        `;
+                <input
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  value="${price}"
+                  readonly
+                  title="Prix fixé depuis STOCK FINAL">
 
-      }).join("");
+              </td>
+
+              <td>
+                ${total.toFixed(2)} DA
+              </td>
+
+              <td>
+
+                <button
+                  class="btn-red"
+                  onclick="removeBonProduct(${index})">
+
+                  X
+
+                </button>
+
+              </td>
+
+            </tr>
+          `;
+
+        })
+        .join("");
 
   }
+
 
   /* =========================
      QUANTITE
   ========================= */
 
-  function changeBonQuantity(
-    index,
-    value
-  ) {
+  function changeBonQuantity(index, value) {
+
+    if (!bonItems[index]) return;
+
 
     bonItems[index].quantity =
       Math.max(
@@ -1971,30 +1936,44 @@
         Number(value) || 1
       );
 
+
     renderBonItems();
     generateBon();
 
   }
+
 
   /* =========================
      PRIX PRIVÉ
+     PRIX FIXE
   ========================= */
 
-  function changeBonPrice(
-    index,
-    value
-  ) {
+  function changeBonPrice(index, value) {
 
-    bonItems[index].price =
-      Math.max(
-        0,
-        Number(value) || 0
-      );
+    const item =
+      bonItems[index];
+
+
+    if (!item) return;
+
+
+    const product =
+      products[
+        Number(item.productIndex)
+      ];
+
+
+    item.price =
+      product
+        ? getProductPrice(product)
+        : 0;
+
 
     renderBonItems();
     generateBon();
 
   }
+
 
   /* =========================
      SUPPRIMER PRODUIT
@@ -2002,15 +1981,13 @@
 
   function removeBonProduct(index) {
 
-    bonItems.splice(
-      index,
-      1
-    );
+    bonItems.splice(index, 1);
 
     renderBonItems();
     generateBon();
 
   }
+
 
   /* =========================
      GENERER BON
@@ -2019,154 +1996,166 @@
   function generateBon() {
 
     const number =
-      document.getElementById(
-        "bonNumber"
-      ).value;
+      document.getElementById("bonNumber").value;
+
 
     const date =
-      document.getElementById(
-        "bonDate"
-      ).value;
+      document.getElementById("bonDate").value;
+
 
     const clientName =
-      document.getElementById(
-        "clientName"
-      ).value;
+      document.getElementById("clientName").value;
+
 
     const clientPhone =
-      document.getElementById(
-        "clientPhone"
-      ).value;
+      document.getElementById("clientPhone").value;
+
 
     const clientAddress =
-      document.getElementById(
-        "clientAddress"
-      ).value;
+      document.getElementById("clientAddress").value;
+
 
     const payment =
-      document.getElementById(
-        "paymentMode"
-      ).value;
+      document.getElementById("paymentMode").value;
+
 
     const discount =
       Math.max(
         0,
         Number(
-          document.getElementById(
-            "discount"
-          ).value
+          document.getElementById("discount").value
         ) || 0
       );
 
+
     const note =
-      document.getElementById(
-        "bonNote"
-      ).value;
+      document.getElementById("bonNote").value;
+
 
     document.getElementById(
       "previewBonNumber"
     ).textContent =
       number || "—";
 
+
     document.getElementById(
       "previewBonDate"
     ).textContent =
       date || "—";
+
 
     document.getElementById(
       "previewClientName"
     ).textContent =
       clientName || "—";
 
+
     document.getElementById(
       "previewClientPhone"
     ).textContent =
       clientPhone || "—";
+
 
     document.getElementById(
       "previewClientAddress"
     ).textContent =
       clientAddress || "—";
 
+
     document.getElementById(
       "previewPayment"
     ).textContent =
       payment || "—";
+
 
     document.getElementById(
       "previewNote"
     ).textContent =
       note || "—";
 
+
     let subtotal = 0;
+
 
     const preview =
       document.getElementById(
         "previewBonProducts"
       );
 
+
     preview.innerHTML =
-      bonItems.map(item => {
+      bonItems
+        .map(item => {
 
-        const product =
-          products[
-            Number(item.productIndex)
-          ];
+          const product =
+            products[
+              Number(item.productIndex)
+            ];
 
-        if (!product) {
-          return "";
-        }
 
-        const quantity =
-          Math.max(
-            1,
-            Number(item.quantity) || 1
-          );
+          if (!product) return "";
 
-        const price =
-          Math.max(
-            0,
-            Number(item.price) || 0
-          );
 
-        const total =
-          quantity * price;
+          const quantity =
+            Math.max(
+              1,
+              Number(item.quantity) || 1
+            );
 
-        subtotal += total;
 
-        return `
+          /*
+            IMPORTANT :
+            Le prix est toujours repris
+            directement de products.json.
+          */
 
-          <tr>
+          const price =
+            getProductPrice(product);
 
-            <td>
-              ${escapeHTML(
-                getDesignation(product)
-              )}
-            </td>
 
-            <td>
-              ${escapeHTML(
-                getReference(product)
-              )}
-            </td>
+          item.price = price;
 
-            <td>
-              ${quantity}
-            </td>
 
-            <td>
-              ${price.toFixed(2)} DA
-            </td>
+          const total =
+            quantity * price;
 
-            <td>
-              ${total.toFixed(2)} DA
-            </td>
 
-          </tr>
+          subtotal += total;
 
-        `;
 
-      }).join("");
+          return `
+            <tr>
+
+              <td>
+                ${escapeHTML(
+                  getDesignation(product)
+                )}
+              </td>
+
+              <td>
+                ${escapeHTML(
+                  getReference(product)
+                )}
+              </td>
+
+              <td>
+                ${quantity}
+              </td>
+
+              <td>
+                ${price.toFixed(2)} DA
+              </td>
+
+              <td>
+                ${total.toFixed(2)} DA
+              </td>
+
+            </tr>
+          `;
+
+        })
+        .join("");
+
 
     const finalTotal =
       Math.max(
@@ -2174,25 +2163,26 @@
         subtotal - discount
       );
 
+
     document.getElementById(
       "previewSubtotal"
     ).textContent =
-      subtotal.toFixed(2) +
-      " DA";
+      subtotal.toFixed(2) + " DA";
+
 
     document.getElementById(
       "previewDiscount"
     ).textContent =
-      discount.toFixed(2) +
-      " DA";
+      discount.toFixed(2) + " DA";
+
 
     document.getElementById(
       "previewTotal"
     ).textContent =
-      finalTotal.toFixed(2) +
-      " DA";
+      finalTotal.toFixed(2) + " DA";
 
   }
+
 
   /* =========================
      IMPRESSION
@@ -2205,6 +2195,7 @@
     window.print();
 
   }
+
 
   /* =========================
      DEMARRAGE
