@@ -6,10 +6,9 @@
 
 <title>Roulement Courrois El Eulma</title>
 <meta name="description" content="Roulements, courroies et joints SPI à El Eulma. Vente en gros et au détail pour véhicules légers, poids lourds et applications industrielles.">
+
 <style>
-*{
-    box-sizing:border-box;
-}
+*{box-sizing:border-box;}
 
 body{
     margin:0;
@@ -59,6 +58,61 @@ header p{
     font-size:16px;
 }
 
+/* RECHERCHE */
+.search-box{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:30px;
+    box-shadow:0 4px 15px rgba(0,0,0,.12);
+}
+
+.search-box h2{
+    text-align:center;
+    margin-top:0;
+}
+
+#search{
+    width:100%;
+    padding:15px;
+    border:2px solid #ddd;
+    border-radius:10px;
+    font-size:17px;
+    outline:none;
+}
+
+#search:focus{
+    border-color:#d71920;
+}
+
+#searchStatus{
+    text-align:center;
+    color:#666;
+    margin:12px 0;
+}
+
+.results{
+    overflow-x:auto;
+}
+
+.results table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.results th,
+.results td{
+    padding:10px;
+    border-bottom:1px solid #ddd;
+    text-align:left;
+}
+
+.results th{
+    background:#111;
+    color:white;
+}
+
+/* PRODUITS */
 .products{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
@@ -91,6 +145,7 @@ header p{
     line-height:1.5;
 }
 
+/* CONTACT */
 .contact{
     margin-top:35px;
     background:#111;
@@ -152,6 +207,11 @@ footer{
     .intro h2{
         font-size:24px;
     }
+
+    .results th,
+    .results td{
+        font-size:14px;
+    }
 }
 </style>
 </head>
@@ -170,6 +230,44 @@ footer{
         <h2>Roulements, Courroies et Joints SPI</h2>
         <p>Roulements, courroies et joints SPI disponibles à El Eulma.</p>
     </div>
+
+    <!-- RECHERCHE -->
+    <div class="search-box">
+
+        <h2>Rechercher un produit</h2>
+
+        <input
+            id="search"
+            type="search"
+            placeholder="Référence, désignation ou marque..."
+            autocomplete="off"
+        >
+
+        <div id="searchStatus">
+            Chargement des références...
+        </div>
+
+        <div class="results">
+
+            <table id="resultsTable" hidden>
+
+                <thead>
+                    <tr>
+                        <th>Référence</th>
+                        <th>Désignation</th>
+                        <th>Marque</th>
+                    </tr>
+                </thead>
+
+                <tbody id="resultsBody"></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- PRODUITS -->
 
     <div class="products">
 
@@ -211,6 +309,8 @@ footer{
 
     </div>
 
+    <!-- CONTACT -->
+
     <div class="contact">
 
         <h2>Contactez Roulements & Courroies El Eulma</h2>
@@ -218,14 +318,19 @@ footer{
         <a class="btn phone" href="tel:0540725525">
             📞 0540 72 55 25
         </a>
-<a class="btn facebook" href="https://www.facebook.com/share/1EpWv87NoV/?mibextid=wwXIfr" target="_blank">
-    🔵 Facebook
-</a>
-        <a class="btn whatsapp" href="https://wa.me/213659734031" target="_blank">
+
+        <a class="btn facebook"
+           href="https://www.facebook.com/share/1EpWv87NoV/?mibextid=wwXIfr"
+           target="_blank">
+            🔵 Facebook
+        </a>
+
+        <a class="btn whatsapp"
+           href="https://wa.me/213659734031"
+           target="_blank">
             💬 WhatsApp
         </a>
 
-        
         <div class="location">
             📍 El Eulma, Sétif, Algérie
         </div>
@@ -237,6 +342,133 @@ footer{
 <footer>
     © 2026 Roulement Courrois El Eulma
 </footer>
+
+
+<script>
+
+let products = [];
+
+const search = document.getElementById("search");
+const status = document.getElementById("searchStatus");
+const table = document.getElementById("resultsTable");
+const body = document.getElementById("resultsBody");
+
+
+/* تحميل المنتجات */
+
+fetch("products.json")
+
+.then(response => response.json())
+
+.then(data => {
+
+    products = data;
+
+    status.textContent =
+        products.length +
+        " références disponibles. Recherchez une référence, une désignation ou une marque.";
+
+})
+
+.catch(error => {
+
+    status.textContent =
+        "La recherche des références est temporairement indisponible.";
+
+});
+
+
+/* Recherche */
+
+function normalize(text){
+
+    return String(text || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g,"");
+
+}
+
+
+search.addEventListener("input", function(){
+
+    const query = normalize(search.value).trim();
+
+    if(!query){
+
+        table.hidden = true;
+
+        status.textContent =
+            products.length +
+            " références disponibles. Recherchez une référence, une désignation ou une marque.";
+
+        return;
+    }
+
+
+    const words = query.split(/\s+/).filter(Boolean);
+
+
+    const matches = products.filter(product => {
+
+        const text = normalize(
+            product.reference + " " +
+            product.designation + " " +
+            product.marque
+        );
+
+        return words.every(word => text.includes(word));
+
+    }).slice(0,100);
+
+
+    body.innerHTML = matches.map(product => `
+
+        <tr>
+
+            <td>${escapeHTML(product.reference)}</td>
+
+            <td>${escapeHTML(product.designation)}</td>
+
+            <td>${escapeHTML(product.marque)}</td>
+
+        </tr>
+
+    `).join("");
+
+
+    table.hidden = matches.length === 0;
+
+
+    status.textContent =
+        matches.length > 0
+        ? matches.length + " résultat(s) trouvé(s)."
+        : "Aucun produit trouvé.";
+
+});
+
+
+/* Protection */
+
+function escapeHTML(value){
+
+    return String(value || "")
+        .replace(/[&<>"']/g, function(character){
+
+            return {
+                "&":"&amp;",
+                "<":"&lt;",
+                ">":"&gt;",
+                '"':"&quot;",
+                "'":"&#039;"
+
+            }[character];
+
+        });
+
+}
+
+</script>
 
 </body>
 </html>
