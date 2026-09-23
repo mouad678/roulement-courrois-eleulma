@@ -8,7 +8,6 @@
   <meta name="description" content="Site officiel — Roulements, Courroies & Joint SPI — El Eulma. Recherchez vos références, marques, véhicules et dimensions.">
   <meta name="keywords" content="roulement, courroie, joint SPI, SKF, TIMKEN, El Eulma">
 
-  <!-- Logo / icône du site -->
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 
@@ -194,8 +193,6 @@
       margin-top: 25px;
     }
 
-    /* ========================= BON ADMIN ========================= */
-
     #bonPanel {
       display: none;
       background: #fff;
@@ -332,8 +329,6 @@
       font-size: 13px;
     }
 
-    /* ========================= RECHERCHE BON ========================= */
-
     .bon-search-box {
       background: #f7f7f7;
       border: 1px solid #ddd;
@@ -379,6 +374,16 @@
       text-align: center;
     }
 
+    /* السعر داخل BON قابل للتعديل */
+    .bon-price-input {
+      width: 120px;
+      margin: 0;
+      text-align: center;
+      font-weight: bold;
+      border: 2px solid #b00000;
+      background: #fffdfd;
+    }
+
     @media (max-width: 700px) {
 
       header h1 {
@@ -404,6 +409,10 @@
 
       .bon-info {
         grid-template-columns: 1fr;
+      }
+
+      .bon-price-input {
+        width: 110px;
       }
     }
 
@@ -456,9 +465,7 @@
 
   <div class="buttons">
 
-    <a
-      class="call"
-      href="tel:0540725525">
+    <a class="call" href="tel:0540725525">
       ☎ Appeler
     </a>
 
@@ -572,29 +579,12 @@
 
     <div class="gallery">
 
-      <img
-        src="IMG_0383.jpeg"
-        alt="Roulements">
-
-      <img
-        src="IMG_0384.jpeg"
-        alt="Roulements">
-
-      <img
-        src="IMG_0385.jpeg"
-        alt="Roulements">
-
-      <img
-        src="IMG_0386.jpeg"
-        alt="Roulements">
-
-      <img
-        src="IMG_0541.jpeg"
-        alt="Courroies">
-
-      <img
-        src="IMG_0542.jpeg"
-        alt="Courroies">
+      <img src="IMG_0383.jpeg" alt="Roulements">
+      <img src="IMG_0384.jpeg" alt="Roulements">
+      <img src="IMG_0385.jpeg" alt="Roulements">
+      <img src="IMG_0386.jpeg" alt="Roulements">
+      <img src="IMG_0541.jpeg" alt="Courroies">
+      <img src="IMG_0542.jpeg" alt="Courroies">
 
     </div>
 
@@ -628,107 +618,70 @@
     <div class="bon-grid">
 
       <div>
-
-        <label>
-          Numéro BON
-        </label>
+        <label>Numéro BON</label>
 
         <input
           type="text"
           id="bonNumber"
           placeholder="BON-000001"
           oninput="generateBon()">
-
       </div>
 
       <div>
-
-        <label>
-          Date
-        </label>
+        <label>Date</label>
 
         <input
           type="date"
           id="bonDate"
           onchange="generateBon()">
-
       </div>
 
       <div>
-
-        <label>
-          Nom client
-        </label>
+        <label>Nom client</label>
 
         <input
           type="text"
           id="clientName"
           placeholder="Nom du client"
           oninput="generateBon()">
-
       </div>
 
       <div>
-
-        <label>
-          Téléphone client
-        </label>
+        <label>Téléphone client</label>
 
         <input
           type="text"
           id="clientPhone"
           placeholder="Téléphone"
           oninput="generateBon()">
-
       </div>
 
       <div>
-
-        <label>
-          Adresse client
-        </label>
+        <label>Adresse client</label>
 
         <input
           type="text"
           id="clientAddress"
           placeholder="Adresse"
           oninput="generateBon()">
-
       </div>
 
       <div>
-
-        <label>
-          Mode de paiement
-        </label>
+        <label>Mode de paiement</label>
 
         <select
           id="paymentMode"
           onchange="generateBon()">
 
-          <option value="Espèces">
-            Espèces
-          </option>
-
-          <option value="Virement">
-            Virement
-          </option>
-
-          <option value="Chèque">
-            Chèque
-          </option>
-
-          <option value="Crédit">
-            Crédit
-          </option>
+          <option value="Espèces">Espèces</option>
+          <option value="Virement">Virement</option>
+          <option value="Chèque">Chèque</option>
+          <option value="Crédit">Crédit</option>
 
         </select>
-
       </div>
 
     </div>
-
-    <!-- RECHERCHE PRODUIT -->
 
     <div class="bon-search-box">
 
@@ -753,8 +706,6 @@
       </div>
 
     </div>
-
-    <!-- PRODUITS DU BON -->
 
     <div class="bon-products">
 
@@ -842,8 +793,6 @@
       </button>
 
     </div>
-
-    <!-- APERCU BON -->
 
     <div id="bonPreview">
 
@@ -994,10 +943,6 @@
 
 <script>
 
-  /* =========================
-     VARIABLES
-  ========================= */
-
   let products = [];
   let bonItems = [];
 
@@ -1006,10 +951,6 @@
   let adminTapCount = 0;
   let adminTapTimer = null;
 
-
-  /* =========================
-     OUTILS
-  ========================= */
 
   function normalize(value) {
 
@@ -1033,10 +974,6 @@
 
   }
 
-
-  /* =========================
-     LECTURE DES CHAMPS
-  ========================= */
 
   function getReference(p) {
 
@@ -1123,11 +1060,7 @@
   }
 
 
-  /* =========================
-     PRIX PRODUIT
-     SOURCE = products.json
-  ========================= */
-
+  /* السعر الأصلي من products.json */
   function getProductPrice(p) {
 
     const value =
@@ -1141,10 +1074,6 @@
 
   }
 
-
-  /* =========================
-     AFFICHAGE STOCK
-  ========================= */
 
   function displayStock(stock) {
 
@@ -1166,10 +1095,6 @@
 
   }
 
-
-  /* =========================
-     CHARGEMENT PRODUITS
-  ========================= */
 
   async function loadProducts() {
 
@@ -1209,10 +1134,6 @@
   }
 
 
-  /* =========================
-     FILTRES DYNAMIQUES
-  ========================= */
-
   function buildFilters() {
 
     const brandSelect =
@@ -1221,10 +1142,8 @@
     const vehicleSelect =
       document.getElementById("vehicleFilter");
 
-
     const brands = new Set();
     const vehicles = new Set();
-
 
     products.forEach(product => {
 
@@ -1234,11 +1153,9 @@
       const vehicle =
         String(getVehicle(product)).trim();
 
-
       if (brand) {
         brands.add(brand);
       }
-
 
       if (vehicle) {
 
@@ -1283,10 +1200,6 @@
   }
 
 
-  /* =========================
-     AFFICHER PRODUITS
-  ========================= */
-
   function renderProducts() {
 
     const tbody =
@@ -1307,16 +1220,6 @@
         document.getElementById("vehicleFilter").value
       );
 
-
-    /*
-      IMPORTANT :
-      La liste publique reste vide
-      tant qu'il n'y a pas de recherche
-      ou de sélection véhicule.
-
-      La marque seule ne déclenche
-      pas l'affichage.
-    */
 
     if (!search && !vehicle) {
 
@@ -1426,29 +1329,17 @@
           return `
             <tr>
 
-              <td>
-                ${reference}
-              </td>
+              <td>${reference}</td>
 
-              <td>
-                ${designation}
-              </td>
+              <td>${designation}</td>
 
-              <td>
-                ${brandText}
-              </td>
+              <td>${brandText}</td>
 
-              <td>
-                ${vehicleText || "—"}
-              </td>
+              <td>${vehicleText || "—"}</td>
 
-              <td>
-                ${dimensions || "—"}
-              </td>
+              <td>${dimensions || "—"}</td>
 
-              <td>
-                ${displayStock(stock)}
-              </td>
+              <td>${displayStock(stock)}</td>
 
               <td>
 
@@ -1471,10 +1362,6 @@
   }
 
 
-  /* =========================
-     DEMANDER PRIX WHATSAPP
-  ========================= */
-
   function requestPrice(index) {
 
     const product =
@@ -1482,13 +1369,11 @@
 
     if (!product) return;
 
-
     const reference =
       getReference(product);
 
     const designation =
       getDesignation(product);
-
 
     const message =
       "Bonjour, je voudrais connaître le prix de : " +
@@ -1496,29 +1381,20 @@
       " - " +
       designation;
 
-
     const url =
       "https://wa.me/213659734031?text=" +
       encodeURIComponent(message);
-
 
     window.open(url, "_blank");
 
   }
 
 
-  /* =========================
-     ACCES ADMIN
-     5 CLICS SUR LE TITRE
-  ========================= */
-
   function secretBonAccess() {
 
     adminTapCount++;
 
-
     clearTimeout(adminTapTimer);
-
 
     adminTapTimer =
       setTimeout(() => {
@@ -1541,18 +1417,12 @@
   }
 
 
-  /* =========================
-     OUVRIR ADMIN
-  ========================= */
-
   function openAdmin() {
 
     const code =
       prompt("Entrez le code administrateur :");
 
-
     if (code === null) return;
-
 
     if (code !== ADMIN_CODE) {
 
@@ -1604,10 +1474,6 @@
 
   }
 
-
-  /* =========================
-     RECHERCHE PRODUIT DANS BON
-  ========================= */
 
   function renderBonSearch() {
 
@@ -1732,19 +1598,13 @@
   }
 
 
-  /* =========================
-     AJOUT PRODUIT AU BON
-  ========================= */
-
   function addBonProduct(productIndex) {
 
     productIndex =
       Number(productIndex);
 
-
     const product =
       products[productIndex];
-
 
     if (!product) return;
 
@@ -1772,6 +1632,7 @@
 
         quantity: 1,
 
+        /* السعر الابتدائي فقط */
         price:
           getProductPrice(product)
 
@@ -1788,6 +1649,7 @@
 
   /* =========================
      AFFICHER PRODUITS BON
+     PRIX MODIFIABLE
   ========================= */
 
   function renderBonItems() {
@@ -1821,7 +1683,6 @@
           const product =
             products[selectedIndex];
 
-
           if (!product) return "";
 
 
@@ -1845,18 +1706,18 @@
 
           /*
             IMPORTANT :
-            Le prix est toujours relu
-            depuis products.json.
-
-            Impossible de le modifier
-            manuellement dans le BON.
+            On ne relit PAS le prix ici.
+            Le prix de products.json sert
+            uniquement de prix initial.
           */
 
-          const price =
-            getProductPrice(product);
+          let price =
+            Number(item.price);
 
-
-          item.price = price;
+          if (!Number.isFinite(price) || price < 0) {
+            price = getProductPrice(product);
+            item.price = price;
+          }
 
 
           const total =
@@ -1887,12 +1748,14 @@
               <td>
 
                 <input
+                  class="bon-price-input"
                   type="number"
                   min="0"
                   step="0.01"
                   value="${price}"
-                  readonly
-                  title="Prix fixé depuis STOCK FINAL">
+                  oninput="changeBonPrice(${index}, this.value)"
+                  onchange="changeBonPrice(${index}, this.value)"
+                  title="Prix modifiable uniquement dans ce BON">
 
               </td>
 
@@ -1921,10 +1784,6 @@
   }
 
 
-  /* =========================
-     QUANTITE
-  ========================= */
-
   function changeBonQuantity(index, value) {
 
     if (!bonItems[index]) return;
@@ -1944,8 +1803,8 @@
 
 
   /* =========================
-     PRIX PRIVÉ
-     PRIX FIXE
+     PRIX BON
+     MODIFIABLE MANUELLEMENT
   ========================= */
 
   function changeBonPrice(index, value) {
@@ -1953,31 +1812,27 @@
     const item =
       bonItems[index];
 
-
     if (!item) return;
 
 
-    const product =
-      products[
-        Number(item.productIndex)
-      ];
+    const newPrice =
+      Number(value);
 
 
-    item.price =
-      product
-        ? getProductPrice(product)
-        : 0;
+    if (
+      Number.isFinite(newPrice) &&
+      newPrice >= 0
+    ) {
+
+      item.price = newPrice;
+
+    }
 
 
-    renderBonItems();
     generateBon();
 
   }
 
-
-  /* =========================
-     SUPPRIMER PRODUIT
-  ========================= */
 
   function removeBonProduct(index) {
 
@@ -1998,26 +1853,20 @@
     const number =
       document.getElementById("bonNumber").value;
 
-
     const date =
       document.getElementById("bonDate").value;
-
 
     const clientName =
       document.getElementById("clientName").value;
 
-
     const clientPhone =
       document.getElementById("clientPhone").value;
-
 
     const clientAddress =
       document.getElementById("clientAddress").value;
 
-
     const payment =
       document.getElementById("paymentMode").value;
-
 
     const discount =
       Math.max(
@@ -2026,7 +1875,6 @@
           document.getElementById("discount").value
         ) || 0
       );
-
 
     const note =
       document.getElementById("bonNote").value;
@@ -2105,15 +1953,18 @@
 
           /*
             IMPORTANT :
-            Le prix est toujours repris
-            directement de products.json.
+            نستعمل السعر الخاص بالـBON،
+            وليس السعر من products.json.
           */
 
-          const price =
-            getProductPrice(product);
+          let price =
+            Number(item.price);
 
 
-          item.price = price;
+          if (!Number.isFinite(price) || price < 0) {
+            price = getProductPrice(product);
+            item.price = price;
+          }
 
 
           const total =
@@ -2184,10 +2035,6 @@
   }
 
 
-  /* =========================
-     IMPRESSION
-  ========================= */
-
   function printBon() {
 
     generateBon();
@@ -2196,10 +2043,6 @@
 
   }
 
-
-  /* =========================
-     DEMARRAGE
-  ========================= */
 
   loadProducts();
 
