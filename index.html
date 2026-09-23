@@ -185,6 +185,43 @@
       box-shadow: 0 2px 8px rgba(0,0,0,.08);
     }
 
+    /* =========================
+       GUIDE TECHNIQUE
+    ========================= */
+
+    .guide-intro {
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .guide-card {
+      background: #f8f8f8;
+      border-left: 5px solid #b00000;
+      border-radius: 10px;
+      padding: 15px;
+    }
+
+    .guide-card h3 {
+      margin-top: 0;
+      color: #b00000;
+    }
+
+    .guide-card p {
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .guide-card strong {
+      color: #111;
+    }
+
     footer {
       background: #111;
       color: white;
@@ -399,6 +436,10 @@
         grid-template-columns: 1fr;
       }
 
+      .guide-grid {
+        grid-template-columns: 1fr;
+      }
+
       .bon-grid {
         grid-template-columns: 1fr;
       }
@@ -585,6 +626,137 @@
       <img src="IMG_0386.jpeg" alt="Roulements">
       <img src="IMG_0541.jpeg" alt="Courroies">
       <img src="IMG_0542.jpeg" alt="Courroies">
+
+    </div>
+
+  </div>
+
+  <!-- =========================
+       GUIDE TECHNIQUE
+  ========================= -->
+
+  <div class="section">
+
+    <h2>📚 Guide Technique</h2>
+
+    <p class="guide-intro">
+      Retrouvez quelques informations pratiques pour mieux identifier
+      vos roulements, joints SPI et courroies.
+    </p>
+
+    <div class="guide-grid">
+
+      <div class="guide-card">
+
+        <h3>🔩 Roulements</h3>
+
+        <p>
+          Un roulement se choisit principalement selon sa
+          <strong>référence</strong>, ses <strong>dimensions</strong>
+          et son application.
+        </p>
+
+        <p>
+          Exemple : <strong>6204</strong> correspond à une référence
+          de roulement précise. Vérifiez toujours les dimensions
+          avant remplacement.
+        </p>
+
+      </div>
+
+
+      <div class="guide-card">
+
+        <h3>📐 Dimensions des roulements</h3>
+
+        <p>
+          Les dimensions d'un roulement sont généralement indiquées
+          dans cet ordre :
+        </p>
+
+        <p>
+          <strong>Diamètre intérieur × diamètre extérieur × largeur</strong>
+        </p>
+
+        <p>
+          Exemple :
+          <strong>20 × 47 × 14 mm</strong>.
+        </p>
+
+      </div>
+
+
+      <div class="guide-card">
+
+        <h3>🛢️ Joints SPI</h3>
+
+        <p>
+          Pour identifier un joint SPI, relevez son
+          <strong>diamètre intérieur, diamètre extérieur et épaisseur</strong>.
+        </p>
+
+        <p>
+          Exemple :
+          <strong>35 × 47 × 7 mm</strong>.
+        </p>
+
+        <p>
+          Vérifiez également le type de joint et son application.
+        </p>
+
+      </div>
+
+
+      <div class="guide-card">
+
+        <h3>⚙️ Courroies</h3>
+
+        <p>
+          Une courroie peut être identifiée par son
+          <strong>profil, sa longueur et son nombre de nervures</strong>.
+        </p>
+
+        <p>
+          Exemple :
+          <strong>6PK</strong> indique une courroie à 6 nervures.
+        </p>
+
+      </div>
+
+
+      <div class="guide-card">
+
+        <h3>🚗 Application automobile</h3>
+
+        <p>
+          Pour rechercher une pièce automobile, indiquez si possible :
+          <strong>marque, modèle, année, moteur et référence de la pièce</strong>.
+        </p>
+
+        <p>
+          Plus les informations sont précises, plus l'identification
+          du produit est facile.
+        </p>
+
+      </div>
+
+
+      <div class="guide-card">
+
+        <h3>🧰 Besoin d'aide ?</h3>
+
+        <p>
+          En cas de doute, envoyez-nous la
+          <strong>référence inscrite sur la pièce</strong>,
+          ses dimensions ou une photo.
+        </p>
+
+        <p>
+          Nous pouvons vous aider à identifier le produit disponible
+          dans notre catalogue.
+        </p>
+
+      </div>
 
     </div>
 
@@ -1704,13 +1876,6 @@
             );
 
 
-          /*
-            IMPORTANT :
-            On ne relit PAS le prix ici.
-            Le prix de products.json sert
-            uniquement de prix initial.
-          */
-
           let price =
             Number(item.price);
 
@@ -1950,12 +2115,6 @@
               Number(item.quantity) || 1
             );
 
-
-          /*
-            IMPORTANT :
-            نستعمل السعر الخاص بالـBON،
-            وليس السعر من products.json.
-          */
 
           let price =
             Number(item.price);
